@@ -1,21 +1,21 @@
 package com.stone.govjob;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
 
 
-public class MainActivity extends ActionBarActivity
+public class QueryJob extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
@@ -171,30 +171,11 @@ public class MainActivity extends ActionBarActivity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
+            ((QueryJob) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
 
 
     }
 
-
-    //Allen Loading畫面
-    public void Loading() {
-        //產生進度球
-
-        //XML轉檔與轉存SqliLite
-        //堂哥的method
-        method1();
-
-        //結束..把球關掉
-
-    }
-
-
-
-    //堂哥的method
-    public void method1() {
-
-    }
 }
