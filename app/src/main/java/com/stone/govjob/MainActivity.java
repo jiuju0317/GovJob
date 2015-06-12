@@ -14,6 +14,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
+import com.stone.myclass.DataHandler;
+import com.stone.myclass.Job;
+import com.stone.myclass.JobDAO;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -23,6 +40,9 @@ public class MainActivity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
+    ArrayList<Job> xmljobs,dbjobs;
+    int annoDate;
+    private JobDAO jobDAO;
     /**
      *
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -33,6 +53,8 @@ public class MainActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Âª∫Á´ãË≥áÊñôÂ∫´Áâ©‰ª∂
+        jobDAO = new JobDAO(getApplicationContext());
 
         Log.i("Stone", "onCreate");
 
@@ -179,22 +201,49 @@ public class MainActivity extends ActionBarActivity
     }
 
 
-    //Allen Loadingµe≠±
+    //Allen LoadingÁï´Èù¢
     public void Loading() {
-        //≤£•Õ∂i´◊≤y
+        //Ê™¢Êü•
 
-        //XML¬‡¿…ªP¬‡¶sSqliLite
-        //∞Û≠Ù™∫method
-        method1();
+        //XMLËΩâÊàêSqliLite
+        //ËΩâXMLmethod
+        parseXML();
 
-        //µ≤ßÙ..ß‚≤y√ˆ±º
+        //
 
     }
 
+    public void parseXML(){
+        SAXParserFactory spf = SAXParserFactory.newInstance();
+
+        try {
+            SAXParser sp = spf.newSAXParser();
+            XMLReader xr = sp.getXMLReader();
+
+            DataHandler dataHandler = new DataHandler();
+            xr.setContentHandler(dataHandler);
+            InputStream is =this.getAssets().open("data.xml");
+            xr.parse(new InputSource(is));
 
 
-    //∞Û≠Ù™∫method
-    public void method1() {
+            xmljobs = dataHandler.getJobs();
+            annoDate = dataHandler.getAnnounceDate();
+
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(int i=0;i<xmljobs.size();i++){
+            Job xmlgetjob = xmljobs.get(i);
+            jobDAO.insert(xmlgetjob); //Â°ûÂÖ•Ë≥áÊñôÂ∫´
+        }
 
     }
 }

@@ -8,6 +8,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="query_title">查詢職缺</string>
+    <string name="text_workplace">工作地點</string>
+    <string name="text_person_kind">人員區分</string>
+    <string name="text_key_word">查詢關鍵字</string>
+    <string name="btn_query">查詢</string>
+
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
