@@ -5,18 +5,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity
@@ -37,6 +33,8 @@ public class MainActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.i("Stone", "onCreate");
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -116,6 +114,7 @@ public class MainActivity extends ActionBarActivity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+        private static int _sectionNumber;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -123,6 +122,9 @@ public class MainActivity extends ActionBarActivity
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
+
+            _sectionNumber = sectionNumber;
+            //Log.i("Stone", Integer.toString(sectionNumber));
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -135,7 +137,34 @@ public class MainActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            //Log.i("Stone", "onCreateView");
+            //int state = savedInstanceState.getInt(ARG_SECTION_NUMBER);
+
+            Log.i("Stone", Integer.toString(_sectionNumber));
+
+            View rootView = null;
+            switch (_sectionNumber) {
+                case 1:
+                    rootView = inflater.inflate(R.layout.queryjob, container, false);
+
+                    /*
+                    this.
+                    getActivity().
+                    getSupportFragmentManager().
+                    beginTransaction().replace(R.id.container,new data()).
+                    commit();
+                    */
+                    break;
+                case 2:
+                    rootView = inflater.inflate(R.layout.favorite, container, false);
+                    break;
+                case 3:
+                    rootView = inflater.inflate(R.layout.abort, container, false);
+                    break;
+            }
+
+
             return rootView;
         }
 
