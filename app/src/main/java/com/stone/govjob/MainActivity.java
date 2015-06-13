@@ -1,6 +1,7 @@
 package com.stone.govjob;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -56,7 +57,7 @@ public class MainActivity extends ActionBarActivity
         // 建立資料庫物件
         jobDAO = new JobDAO(getApplicationContext());
 
-        Log.i("Stone", "onCreate");
+        Log.i("MainActivity", "onCreate");
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -66,6 +67,8 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        //Loading();
     }
 
     @Override
@@ -146,7 +149,7 @@ public class MainActivity extends ActionBarActivity
             PlaceholderFragment fragment = new PlaceholderFragment();
 
             _sectionNumber = sectionNumber;
-            //Log.i("Stone", Integer.toString(sectionNumber));
+            //Log.i("MainActivity", Integer.toString(sectionNumber));
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -160,15 +163,17 @@ public class MainActivity extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            //Log.i("Stone", "onCreateView");
+            Log.i("MainActivity", "onCreateView");
             //int state = savedInstanceState.getInt(ARG_SECTION_NUMBER);
 
-            Log.i("Stone", Integer.toString(_sectionNumber));
+            Log.i("MainActivity", Integer.toString(_sectionNumber));
 
             View rootView = null;
             switch (_sectionNumber) {
                 case 1:
                     rootView = inflater.inflate(R.layout.queryjob, container, false);
+
+
 
                     /*
                     this.
@@ -203,11 +208,16 @@ public class MainActivity extends ActionBarActivity
 
     //Allen Loading畫面
     public void Loading() {
+        Log.i("MainActivity", "進入Loading");
         //檢查
 
         //XML轉成SqliLite
         //轉XMLmethod
+
+        Log.i("MainActivity", "轉入XML Start");
         parseXML();
+        Log.i("MainActivity", "轉入XML End");
+
 
         //
 

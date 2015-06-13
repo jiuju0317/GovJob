@@ -34,7 +34,7 @@ public class QueryJob extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.i("Stone", "onCreate");
+        Log.i("QueryJob", "onCreate");
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -124,7 +124,7 @@ public class QueryJob extends ActionBarActivity
             PlaceholderFragment fragment = new PlaceholderFragment();
 
             _sectionNumber = sectionNumber;
-            //Log.i("Stone", Integer.toString(sectionNumber));
+            //Log.i("MainActivity", Integer.toString(sectionNumber));
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -138,10 +138,10 @@ public class QueryJob extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            //Log.i("Stone", "onCreateView");
+            //Log.i("MainActivity", "onCreateView");
             //int state = savedInstanceState.getInt(ARG_SECTION_NUMBER);
 
-            Log.i("Stone", Integer.toString(_sectionNumber));
+            Log.i("MainActivity", Integer.toString(_sectionNumber));
 
             View rootView = null;
             switch (_sectionNumber) {
