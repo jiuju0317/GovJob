@@ -94,12 +94,12 @@ public class QueryJob extends ActionBarActivity
         //==================================
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+                getSupportFragmentManager().findFragmentById(R.id.drawer_layout);
         mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
+                R.id.drawer_layout,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 

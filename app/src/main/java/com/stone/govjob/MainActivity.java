@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.content.Intent;
+import android.os.Handler;
 
 import com.stone.myclass.DataHandler;
 import com.stone.myclass.Job;
@@ -59,12 +61,12 @@ public class MainActivity extends ActionBarActivity
         Log.i("Stone", "onCreate");
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+                getSupportFragmentManager().findFragmentById(R.id.drawer_layout);
         mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
+                R.id.drawer_layout,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
@@ -200,18 +202,36 @@ public class MainActivity extends ActionBarActivity
 
     }
 
-
     //Allen Loading畫面
-    public void Loading() {
-        //檢查
+    public class loading extends Activity {
 
-        //XML轉成SqliLite
-        //轉XMLmethod
-        parseXML();
+        /** Duration of wait **/
+        private final int SPLASH_DISPLAY_LENGTH = 1000;
 
-        //
+        /** Called when the activity is first created. */
+        @Override
+        public void onCreate(Bundle icicle) {
+            super.onCreate(icicle);
+            setContentView(R.layout.splashscreen);
 
+            //檢查、XML轉成SqliLite、轉XMLmethod (to be checked)
+
+
+        /* New Handler to start the Menu-Activity
+         * and close this Splash-Screen after some seconds.*/
+            new Handler().postDelayed(new Runnable(){
+                @Override
+                public void run() {
+                /* Create an Intent that will start the Menu-Activity. */
+                    Intent mainIntent = new Intent(loading.this,Menu.class);
+                    loading.this.startActivity(mainIntent);
+                    loading.this.finish();
+                }
+            }, SPLASH_DISPLAY_LENGTH);
+        }
     }
+
+
 
     public void parseXML(){
         SAXParserFactory spf = SAXParserFactory.newInstance();
