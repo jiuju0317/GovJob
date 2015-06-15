@@ -13,7 +13,7 @@
         style="@android:style/Widget.ProgressBar.Horizontal"
 
         android:indeterminate="true"
-        android:layout_width="250px"
+        android:layout_width="260px"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
 
