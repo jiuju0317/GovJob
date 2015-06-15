@@ -33,12 +33,14 @@ public class MyDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(JobDAO.CREATE_TABLE);
+        db.execSQL(JobDAO.CREATE_ANNOTABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // 刪除原有的表格
         db.execSQL("DROP TABLE IF EXISTS " + JobDAO.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + JobDAO.TABLE_NAME_ANNO);
         // 呼叫onCreate建立新版的表格
         onCreate(db);
     }

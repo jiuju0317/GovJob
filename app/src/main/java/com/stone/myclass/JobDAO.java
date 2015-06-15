@@ -19,6 +19,7 @@ public class JobDAO  {
 
     // 表格名稱
     public static final String TABLE_NAME = "job";
+    public static final String TABLE_NAME_ANNO = "dbannodate";
 
     // 編號表格欄位名稱，固定不變
     public static final String KEY_ID = "_id";
@@ -73,7 +74,9 @@ public class JobDAO  {
                     COLUMN_CONTACT_METHOD+" TEXT,"+
                     COLUMN_URL_LINK+" TEXT,"+
                     COLUMN_VIEW_URL+" TEXT"+
-                    ")";
+                    ");";
+    public static final String CREATE_ANNOTABLE =
+            "CREATE TABLE "+TABLE_NAME_ANNO+"(ANNOUNCE_DATE INTEGER);" ;
 
     // 資料庫物件
     private SQLiteDatabase db;
@@ -123,7 +126,7 @@ public class JobDAO  {
         // 第一個參數是表格名稱
         // 第二個參數是沒有指定欄位值的預設值
         // 第三個參數是包裝新增資料的ContentValues物件
-        db.insert(TABLE_NAME, null, cv);
+        db. insertWithOnConflict(TABLE_NAME, null, cv,SQLiteDatabase.CONFLICT_IGNORE);
 
         // 回傳結果
         return job;
@@ -217,7 +220,7 @@ public class JobDAO  {
         where = "SELECT * FROM "+TABLE_NAME+ " WHERE " + where + ";";
         Log.i("where=>",where);
         ArrayList<Job> result = new ArrayList<>();
-        Cursor cursor = db.rawQuery(where,null);
+        Cursor cursor = db.rawQuery(where, null);
 
         while (cursor.moveToNext()) {
             result.add(getRecord(cursor));
@@ -282,4 +285,37 @@ public class JobDAO  {
 
         return result;
     }
+
+    public int getDBAnnoDate(){
+        int result = 0;
+        Cursor cursor = db.rawQuery("SELECT * FROM dbannodate", null);
+
+        if (cursor.moveToNext()) {
+            result = cursor.getInt(0);
+        }
+
+        return result;
+    }
+
+    public boolean setDBAnnoDate(int dbAnnoDate){
+        // 建立準備修改資料的ContentValues物件
+        ContentValues cv = new ContentValues();
+
+        // 加入ContentValues物件包裝的修改資料
+        // 第一個參數是欄位名稱， 第二個參數是欄位的資料
+        cv.put("ANNOUNCE_DATE", dbAnnoDate);
+
+        return db.update("dbannodate", cv, null, null) > 0;
+    }
+
+    public boolean insertDBAnnoDate(int dbAnnoDate){
+        // 建立準備修改資料的ContentValues物件
+        ContentValues cv = new ContentValues();
+
+        // 加入ContentValues物件包裝的修改資料
+        // 第一個參數是欄位名稱， 第二個參數是欄位的資料
+        cv.put("ANNOUNCE_DATE", dbAnnoDate);
+        return db.insert("dbannodate", null, cv)>0;
+    }
+
 }

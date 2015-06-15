@@ -1,7 +1,10 @@
 package com.stone.govjob;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -50,6 +53,17 @@ public class QueryJob extends ActionBarActivity
     EditText keyWord_edt;
     ArrayAdapter workPlace_adp,personKind_adp;
     Button query_btn;
+
+    private ProgressDialog progressDialog;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            // main thread 從 main queue 取得 handler 丟進來的 message
+            // 再從該 message 取得 handler 物件
+            // 最後呼叫 handler 的 callback method - handleMessage 來關閉進度對話窗
+            progressDialog.dismiss();
+        }
+    };
     //============================
 
     /**
@@ -91,6 +105,18 @@ public class QueryJob extends ActionBarActivity
         personKind_adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         personKind_spn.setAdapter(personKind_adp);
         personKind_spn.setOnItemSelectedListener(new spinnerListener());
+
+        //Loading區段
+        // 建立並顯示進度對話窗
+        this.progressDialog = new ProgressDialog(this);
+        this.progressDialog.setTitle("執行中");
+        this.progressDialog.setMessage("請稍後...");
+        this.progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        this.progressDialog.show();
+
+        // 建立 worker thread，並交付由 main thread 建立的 handler
+        // 供 worker thread 稍後與 main thread 溝通
+        new Thread(new LoadingXMLThread(this.handler)).start();
         //==================================
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
@@ -103,46 +129,15 @@ public class QueryJob extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
-    //==========================
-    public void parseXML(){
-        SAXParserFactory spf = SAXParserFactory.newInstance();
-
-        try {
-            SAXParser sp = spf.newSAXParser();
-            XMLReader xr = sp.getXMLReader();
-
-            DataHandler dataHandler = new DataHandler();
-            xr.setContentHandler(dataHandler);
-            InputStream is =this.getAssets().open("data.xml");
-            xr.parse(new InputSource(is));
-
-            xmljobs = dataHandler.getJobs();
-            annoDate = dataHandler.getAnnounceDate();
-
-
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        for(int i=0;i<xmljobs.size();i++){
-            Job xmlgetjob = xmljobs.get(i);
-            jobDAO.insert(xmlgetjob); //塞入資料庫
-        }
-
-    }
-
+    //=========================
+    //處理spinner選項
     class spinnerListener implements AdapterView.OnItemSelectedListener {
-
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             if(parent.getId() == R.id.workPlace_spn) {
                 queryWorkPlace = workPlace_adp.getItem(position).toString();
+
+
                 Log.i("workplace ===>", queryWorkPlace);
             }else if (parent.getId()== R.id.personKind_spn){
                 queryPersoKind = personKind_adp.getItem(position).toString();
@@ -156,17 +151,13 @@ public class QueryJob extends ActionBarActivity
         }
     }
 
+    //查詢
     class beginQuery implements View.OnClickListener
     {
         @Override
         public void onClick(View v) {
             queryKeyWord = keyWord_edt.getText().toString();
             Log.i("Start Querying!!!","!!!!!!!");
-            /*
-            int id = Integer.parseInt(queryKeyWord);
-            Job job = jobDAO.queryJob(id);
-            Log.i("job=>",job.toString());
-            */
 
             String where ="("
                     +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+queryWorkPlace+"%' "
@@ -199,8 +190,73 @@ public class QueryJob extends ActionBarActivity
                 Log.i("queryResults","queryResults = null!!");
             }
 
+        }
+    }
+
+    //解析XML並塞入資料庫
+    public void parseXML(){
+        SAXParserFactory spf = SAXParserFactory.newInstance();
+
+        try {
+            SAXParser sp = spf.newSAXParser();
+            XMLReader xr = sp.getXMLReader();
+
+            DataHandler dataHandler = new DataHandler();
+            xr.setContentHandler(dataHandler);
+            InputStream is =this.getAssets().open("data.xml");
+            xr.parse(new InputSource(is));
+
+            xmljobs = dataHandler.getJobs();
+            annoDate = dataHandler.getAnnounceDate();
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.d("annoDate",Integer.toString(annoDate));
+        Log.d("DBannoDate",Integer.toString(jobDAO.getDBAnnoDate()));
+        int DBAnnoDate = jobDAO.getDBAnnoDate();
+
+        if(DBAnnoDate==0){ //第一次塞資料
+            for (int i = 0; i < xmljobs.size(); i++) {
+                Job xmlgetjob = xmljobs.get(i);
+                jobDAO.insert(xmlgetjob); //塞入資料庫
+            }
+            jobDAO.insertDBAnnoDate(annoDate);
+        }else if(annoDate>jobDAO.getDBAnnoDate()){ //更新資料
+            for (int i = 0; i < xmljobs.size(); i++) {
+                Job xmlgetjob = xmljobs.get(i);
+                jobDAO.insert(xmlgetjob); //塞入資料庫
+            }
+            jobDAO.setDBAnnoDate(annoDate);
+        }
+    }
+
+    //執行塞資料庫，塞完告訴Loading畫面關閉
+
+    public class LoadingXMLThread implements Runnable {
+
+        private Handler handler;
+
+        public LoadingXMLThread(Handler handler) {
+            super();
+            this.handler = handler;
+        }
+
+        @Override
+        public void run() {
 
 
+            //塞資料庫
+            parseXML();
+
+            // 丟一個 message 到 main queue 裡，由 main thread 接手處理
+            this.handler.sendEmptyMessage(0);
         }
     }
     //==========================
