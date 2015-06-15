@@ -61,12 +61,12 @@ public class MainActivity extends ActionBarActivity
         Log.i("Stone", "onCreate");
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.drawer_layout);
+                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
-                R.id.drawer_layout,
+                R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
@@ -89,6 +89,9 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
+                break;
+            case 4:
+                mTitle = getString(R.string.title_section4);
                 break;
         }
     }
@@ -184,8 +187,13 @@ public class MainActivity extends ActionBarActivity
                     rootView = inflater.inflate(R.layout.favorite, container, false);
                     break;
                 case 3:
-                    rootView = inflater.inflate(R.layout.abort, container, false);
+                    rootView = inflater.inflate(R.layout.about, container, false);
                     break;
+
+                case 4:
+                    rootView = inflater.inflate(R.layout.splashscreen, container, false);
+                    break;
+
             }
 
 
