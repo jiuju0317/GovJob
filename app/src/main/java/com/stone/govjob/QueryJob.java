@@ -13,10 +13,44 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import com.stone.myclass.DataHandler;
+import com.stone.myclass.Job;
+import com.stone.myclass.JobDAO;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 
 public class QueryJob extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    //============================
+    ArrayList<Job> xmljobs,queryResults;
+    int annoDate;
+    private JobDAO jobDAO;
+    String queryWorkPlace,queryPersoKind,queryKeyWord;
+
+    Spinner workPlace_spn,personKind_spn;
+    EditText keyWord_edt;
+    ArrayAdapter workPlace_adp,personKind_adp;
+    Button query_btn;
+    //============================
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -32,9 +66,32 @@ public class QueryJob extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.queryjob);
 
-        Log.i("Stone", "onCreate");
+        //==================================
+        // 建立資料庫物件
+        jobDAO = new JobDAO(getApplicationContext());
+
+        query_btn = (Button) this.findViewById(R.id.query_btn);
+        View.OnClickListener myListener = new beginQuery();
+        query_btn.setOnClickListener(myListener);
+
+        //Spinner區段
+
+        workPlace_spn = (Spinner) this.findViewById(R.id.workPlace_spn);
+        personKind_spn = (Spinner) this.findViewById(R.id.personKind_spn);
+        keyWord_edt = (EditText) this.findViewById(R.id.keyWord_edt);
+
+        workPlace_adp = ArrayAdapter.createFromResource(this, R.array.workPlace, android.R.layout.simple_spinner_item);
+        workPlace_adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        workPlace_spn.setAdapter(workPlace_adp);
+        workPlace_spn.setOnItemSelectedListener(new spinnerListener());
+
+        personKind_adp = ArrayAdapter.createFromResource(this, R.array.personKind, android.R.layout.simple_spinner_item);
+        personKind_adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        personKind_spn.setAdapter(personKind_adp);
+        personKind_spn.setOnItemSelectedListener(new spinnerListener());
+        //==================================
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -45,6 +102,108 @@ public class QueryJob extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
     }
+
+    //==========================
+    public void parseXML(){
+        SAXParserFactory spf = SAXParserFactory.newInstance();
+
+        try {
+            SAXParser sp = spf.newSAXParser();
+            XMLReader xr = sp.getXMLReader();
+
+            DataHandler dataHandler = new DataHandler();
+            xr.setContentHandler(dataHandler);
+            InputStream is =this.getAssets().open("data.xml");
+            xr.parse(new InputSource(is));
+
+            xmljobs = dataHandler.getJobs();
+            annoDate = dataHandler.getAnnounceDate();
+
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for(int i=0;i<xmljobs.size();i++){
+            Job xmlgetjob = xmljobs.get(i);
+            jobDAO.insert(xmlgetjob); //塞入資料庫
+        }
+
+    }
+
+    class spinnerListener implements AdapterView.OnItemSelectedListener {
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(parent.getId() == R.id.workPlace_spn) {
+                queryWorkPlace = workPlace_adp.getItem(position).toString();
+                Log.i("workplace ===>", queryWorkPlace);
+            }else if (parent.getId()== R.id.personKind_spn){
+                queryPersoKind = personKind_adp.getItem(position).toString();
+                Log.i("personkind ===>",queryPersoKind);
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+    class beginQuery implements View.OnClickListener
+    {
+        @Override
+        public void onClick(View v) {
+            queryKeyWord = keyWord_edt.getText().toString();
+            Log.i("Start Querying!!!","!!!!!!!");
+            /*
+            int id = Integer.parseInt(queryKeyWord);
+            Job job = jobDAO.queryJob(id);
+            Log.i("job=>",job.toString());
+            */
+
+            String where ="("
+                    +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+queryWorkPlace+"%' "
+                    +" AND "+JobDAO.COLUMN_PERSON_KIND+" LIKE '%"+queryPersoKind+"%' "
+                    +")";
+            String where_keyword =
+                    " AND ( "+JobDAO.COLUMN_ORG_NAME+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_RANK+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_TITLE+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_TYPE+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_WORK_QUALITY+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_WORK_ITEM+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_WORK_ADDRESS+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_CONTACT_METHOD+" LIKE '%"+queryKeyWord+"%' "
+                            +")";
+            if(!queryKeyWord.equals("")){
+                where = where + where_keyword;
+            }
+
+            ArrayList<Job> queryResults = jobDAO.queryJob(where);
+
+            if(queryResults != null){
+                Log.i("queryResults.size=",Integer.toString(queryResults.size()));
+                for(int i =0;i<queryResults.size();i++){
+                    Log.i("queryResults.size = ",Integer.toString(queryResults.size()));
+                    Log.i("queryResults["+i+"] = ",queryResults.get(i).toString());
+                }
+
+            }else{
+                Log.i("queryResults","queryResults = null!!");
+            }
+
+
+
+        }
+    }
+    //==========================
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {

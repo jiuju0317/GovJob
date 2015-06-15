@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,7 +15,7 @@ import java.util.Date;
 /**
  * Created by meamea on 2015/6/12.
  */
-public class JobDAO {
+public class JobDAO  {
 
     // 表格名稱
     public static final String TABLE_NAME = "job";
@@ -211,6 +212,21 @@ public class JobDAO {
         return job;
     }
 
+    // 取得符合查詢條件的資料物件
+    public ArrayList<Job> queryJob(String where) {
+        where = "SELECT * FROM "+TABLE_NAME+ " WHERE " + where + ";";
+        Log.i("where=>",where);
+        ArrayList<Job> result = new ArrayList<>();
+        Cursor cursor = db.rawQuery(where,null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor));
+        }
+
+        cursor.close();
+        return result;
+    }
+
     // 把Cursor目前的資料包裝為物件
     public Job getRecord(Cursor cursor) {
         // 準備回傳結果用的物件
@@ -226,7 +242,7 @@ public class JobDAO {
         result.setGenderType(cursor.getString(7));
         result.setWorkPlaceType(cursor.getString(8));
 
-        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date dateFrom = null,dateTo = null;
         try {
             dateFrom = df.parse(cursor.getString(9));
