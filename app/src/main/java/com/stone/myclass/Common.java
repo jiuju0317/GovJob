@@ -28,7 +28,9 @@ public class Common {
     public static boolean isNavigationDrawerFragmentCreate = false;
 
     //紀錄上次Intent的位置..當第一次進入時..切換Layout時要帶入這個
-    public static int sectionNumber = 0;
+    public static int sectionNumber = 1;
+
+    public static View rootView = null;
 
     /**
      * A placeholder fragment containing a simple view.
@@ -70,7 +72,7 @@ public class Common {
             Log.i("Common", "onCreateView");
             Log.i("Common", Integer.toString(Common.sectionNumber));
 
-            View rootView = null;
+
             Intent go;
 
             Log.i("Common", "isNavigationDrawerFragmentCreate = " + Common.isNavigationDrawerFragmentCreate);

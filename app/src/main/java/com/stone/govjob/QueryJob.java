@@ -45,7 +45,7 @@ public class QueryJob extends ActionBarActivity
      */
     private CharSequence mTitle;
 
-    View rootview;
+    //View rootview;
     ArrayList<Job> xmljobs,queryResults;
     int annoDate;
     private JobDAO jobDAO;
@@ -63,7 +63,7 @@ public class QueryJob extends ActionBarActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment frg1 = Common.PlaceholderFragment.newInstance(position + 1, this);
-        rootview = frg1.getView();
+        //rootview = frg1.getView();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, frg1)
                 .commit();
@@ -143,16 +143,21 @@ public class QueryJob extends ActionBarActivity
 
         // 建立資料庫物件
         jobDAO = new JobDAO(getApplicationContext());
+    }
 
-        query_btn = (Button) rootview.findViewById(R.id.query_btn);
+    public void onResume() {
+
+        query_btn = (Button) Common.rootView.findViewById(R.id.query_btn);
+        query_btn = (Button) Common.rootView.findViewById(R.id.query_btn);
+
         View.OnClickListener myListener = new beginQuery();
         query_btn.setOnClickListener(myListener);
 
         //Spinner區段
 
-        workPlace_spn = (Spinner) findViewById(R.id.workPlace_spn);
-        personKind_spn = (Spinner) findViewById(R.id.personKind_spn);
-        keyWord_edt = (EditText) findViewById(R.id.keyWord_edt);
+        workPlace_spn = (Spinner) Common.rootView.findViewById(R.id.workPlace_spn);
+        personKind_spn = (Spinner) Common.rootView.findViewById(R.id.personKind_spn);
+        keyWord_edt = (EditText) Common.rootView.findViewById(R.id.keyWord_edt);
 
         workPlace_adp = ArrayAdapter.createFromResource(this, R.array.workPlace, android.R.layout.simple_spinner_item);
         workPlace_adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -164,8 +169,8 @@ public class QueryJob extends ActionBarActivity
         personKind_spn.setAdapter(personKind_adp);
         personKind_spn.setOnItemSelectedListener(new spinnerListener());
 
+        super.onResume();
     }
-
 
     //=====處理spinner選項====================
     class spinnerListener implements AdapterView.OnItemSelectedListener {
