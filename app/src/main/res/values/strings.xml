@@ -17,4 +17,10 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+    <string name="appDesc">此App目的為協助使用者查詢行政院公告職缺，並可利用App功能快速查詢和管理目標，類型涵蓋正式公務人員與約聘公務人員</string>
+    <string name="mem_desc_01">楊滿堂，程式開發戰鬥力如哥吉拉般強悍，是本組專案開發的台柱與偉大舵手，負責最核心的職缺查詢功能開發設計</string>
+    <string name="mem_desc_02">陳希棟，本組組長，負責專案規劃和主畫面、查詢列表與明細畫面的開發與設計</string>
+    <string name="mem_desc_03">博志，負責APP中Google Map相關應用功能的設計與開發</string>
+    <string name="mem_desc_04">Allen，負責畫面切換與讀取偵測功能設計與部分版面規劃，以及總體APP呈現報告</string>
+    <string name="title_section4">Loading Test</string>
 </resources>
