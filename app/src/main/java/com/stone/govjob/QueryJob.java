@@ -1,16 +1,32 @@
 package com.stone.govjob;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.stone.myclass.Common;
+import com.stone.myclass.Job;
+import com.stone.myclass.JobDAO;
 import com.stone.myclass.NavigationDrawerFragment;
+
+import java.util.ArrayList;
 
 
 public class QueryJob extends ActionBarActivity
@@ -29,12 +45,27 @@ public class QueryJob extends ActionBarActivity
      */
     private CharSequence mTitle;
 
+    View rootview;
+    ArrayList<Job> xmljobs,queryResults;
+    int annoDate;
+    private JobDAO jobDAO;
+    String queryWorkPlace, queryPersonKind,queryKeyWord;
+
+    Spinner workPlace_spn,personKind_spn;
+    EditText keyWord_edt;
+    ArrayAdapter workPlace_adp,personKind_adp;
+    Button query_btn;
+
+
+
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment frg1 = Common.PlaceholderFragment.newInstance(position + 1, this);
+        rootview = frg1.getView();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, Common.PlaceholderFragment.newInstance(position + 1, this))
+                .replace(R.id.container, frg1)
                 .commit();
     }
 
@@ -109,6 +140,146 @@ public class QueryJob extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        // 建立資料庫物件
+        jobDAO = new JobDAO(getApplicationContext());
+
+        query_btn = (Button) rootview.findViewById(R.id.query_btn);
+        View.OnClickListener myListener = new beginQuery();
+        query_btn.setOnClickListener(myListener);
+
+        //Spinner區段
+
+        workPlace_spn = (Spinner) findViewById(R.id.workPlace_spn);
+        personKind_spn = (Spinner) findViewById(R.id.personKind_spn);
+        keyWord_edt = (EditText) findViewById(R.id.keyWord_edt);
+
+        workPlace_adp = ArrayAdapter.createFromResource(this, R.array.workPlace, android.R.layout.simple_spinner_item);
+        workPlace_adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        workPlace_spn.setAdapter(workPlace_adp);
+        workPlace_spn.setOnItemSelectedListener(new spinnerListener());
+
+        personKind_adp = ArrayAdapter.createFromResource(this, R.array.personKind, android.R.layout.simple_spinner_item);
+        personKind_adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        personKind_spn.setAdapter(personKind_adp);
+        personKind_spn.setOnItemSelectedListener(new spinnerListener());
+
     }
 
+
+    //=====處理spinner選項====================
+    class spinnerListener implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(parent.getId() == R.id.workPlace_spn) {
+                queryWorkPlace = workPlace_adp.getItem(position).toString();
+                Resources arrays =getResources();
+                String[] arrWorkPlace=arrays.getStringArray(R.array.workPlace);
+
+                if(queryWorkPlace.equals(arrWorkPlace[0])){
+                    queryWorkPlace = "";
+                }else if(queryWorkPlace.equals(arrWorkPlace[1])){
+                    queryWorkPlace = "("
+                            +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[2]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[3]+"%'"
+                            +") AND ";
+                }else if(queryWorkPlace.equals(arrWorkPlace[4])){
+                    queryWorkPlace = "("
+                            +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[5]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[6]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[7]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[8]+"%'"
+                            +") AND ";
+                }else if(queryWorkPlace.equals(arrWorkPlace[9])){
+                    queryWorkPlace = "("
+                            +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[10]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[11]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[12]+"%'"
+                            +") AND ";
+                }else if(queryWorkPlace.equals(arrWorkPlace[13])){
+                    queryWorkPlace = "("
+                            +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[14]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[15]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[16]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[17]+"%'"
+                            +") AND ";
+                }else if(queryWorkPlace.equals(arrWorkPlace[18])){
+                    queryWorkPlace = "("
+                            +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[19]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[20]+"%'"
+                            +") AND ";
+                }else if(queryWorkPlace.equals(arrWorkPlace[21])){
+                    queryWorkPlace = "("
+                            +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[22]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[23]+"%'"
+                            +") AND ";
+                }else if(queryWorkPlace.equals(arrWorkPlace[24])){
+                    queryWorkPlace = "("
+                            +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[25]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[26]+"%'"
+                            +") AND ";
+                }else if(queryWorkPlace.equals(arrWorkPlace[27])){
+                    queryWorkPlace = "("
+                            +JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[28]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[29]+"%'"
+                            +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[30]+"%'"
+                            +") AND ";
+                }else{
+                    queryWorkPlace = JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+queryWorkPlace+"%' ";
+                }
+
+
+            }else if (parent.getId()== R.id.personKind_spn){
+                queryPersonKind = personKind_adp.getItem(position).toString();
+                Log.i("personkind ===>", queryPersonKind);
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+    //=====查詢====================
+    class beginQuery implements View.OnClickListener
+    {
+        @Override
+        public void onClick(View v) {
+            queryKeyWord = keyWord_edt.getText().toString();
+            Log.i("Start Querying!!!","!!!!!!!");
+
+            String where ="("+queryWorkPlace
+                    +JobDAO.COLUMN_PERSON_KIND+" LIKE '%"+ queryPersonKind +"%' "
+                    +")";
+
+            String where_keyword =
+                    " AND ( "+JobDAO.COLUMN_ORG_NAME+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_RANK+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_TITLE+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_TYPE+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_WORK_QUALITY+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_WORK_ITEM+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_WORK_ADDRESS+" LIKE '%"+queryKeyWord+"%' "
+                            +" OR "+JobDAO.COLUMN_CONTACT_METHOD+" LIKE '%"+queryKeyWord+"%' "
+                            +")";
+            if(!queryKeyWord.equals("")){
+                where = where + where_keyword;
+            }
+
+            ArrayList<Job> queryResults = jobDAO.queryJob(where);
+
+            if(queryResults != null){
+                Log.i("queryResults.size=",Integer.toString(queryResults.size()));
+                for(int i =0;i<queryResults.size();i++){
+                    Log.i("queryResults.size = ",Integer.toString(queryResults.size()));
+                    Log.i("queryResults["+i+"] = ",queryResults.get(i).toString());
+                }
+
+            }else{
+                Log.i("queryResults","queryResults = null!!");
+            }
+
+        }
+    }
 }
