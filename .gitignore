@@ -5,3 +5,7 @@
 .DS_Store
 /build
 /memo.txt
+/.idea/misc.xml
+/.idea/gradle.xml
+/app/app.iml
+/.idea/encodings.xml
