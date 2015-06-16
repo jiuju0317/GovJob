@@ -1,22 +1,22 @@
 package com.stone.govjob;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+
+import com.stone.myclass.Common;
+import com.stone.myclass.NavigationDrawerFragment;
 
 
 public class QueryJob extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    //region NavigationDrawerFragment..這段不要修改
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -30,28 +30,11 @@ public class QueryJob extends ActionBarActivity
     private CharSequence mTitle;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Log.i("QueryJob", "onCreate");
-
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
-
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
-    }
-
-    @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, Common.PlaceholderFragment.newInstance(position + 1, this))
                 .commit();
     }
 
@@ -70,16 +53,17 @@ public class QueryJob extends ActionBarActivity
     }
 
     public void restoreActionBar() {
+        Log.i("QueryJob", "restoreActionBar");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
+            Log.i("QueryJob", "onCreateOptionsMenu change layout");
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
@@ -92,6 +76,7 @@ public class QueryJob extends ActionBarActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.i("QueryJob", "onOptionsItemSelected");
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -105,77 +90,25 @@ public class QueryJob extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-        private static int _sectionNumber;
+    //endregion NavigationDrawerFragment..這段不要修改
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+    //從這裡開始寫Code
 
-            _sectionNumber = sectionNumber;
-            //Log.i("MainActivity", Integer.toString(sectionNumber));
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.navigation_drawer);
 
-        public PlaceholderFragment() {
-        }
+        Log.i("QueryJob", "onCreate");
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+        mNavigationDrawerFragment = (NavigationDrawerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mTitle = getTitle();
 
-            //Log.i("MainActivity", "onCreateView");
-            //int state = savedInstanceState.getInt(ARG_SECTION_NUMBER);
-
-            Log.i("MainActivity", Integer.toString(_sectionNumber));
-
-            View rootView = null;
-            switch (_sectionNumber) {
-                case 1:
-                    rootView = inflater.inflate(R.layout.queryjob, container, false);
-
-                    /*
-                    this.
-                    getActivity().
-                    getSupportFragmentManager().
-                    beginTransaction().replace(R.id.container,new data()).
-                    commit();
-                    */
-                    break;
-                case 2:
-                    rootView = inflater.inflate(R.layout.favorite, container, false);
-                    break;
-                case 3:
-                    rootView = inflater.inflate(R.layout.abort, container, false);
-                    break;
-            }
-
-
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((QueryJob) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
-
-
+        // Set up the drawer.
+        mNavigationDrawerFragment.setUp(
+                R.id.navigation_drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
 }
