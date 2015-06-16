@@ -1,4 +1,4 @@
-package com.stone.govjob;
+package com.stone.myclass;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.stone.govjob.R;
+import com.stone.myclass.Common;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -58,6 +62,8 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
+
+
     public NavigationDrawerFragment() {
     }
 
@@ -75,8 +81,13 @@ public class NavigationDrawerFragment extends Fragment {
             mFromSavedInstanceState = true;
         }
 
+        Common.isNavigationDrawerFragmentCreate = true; //第一次進入該頁面
+
+        selectItem(Common.sectionNumber - 1);	//載入上次Intent的位置
+
+        //下面這是預設的..不能用在不同的Activity
         // Select either the default item (0) or the last selected item.
-        selectItem(mCurrentSelectedPosition);
+        //selectItem(mCurrentSelectedPosition);
     }
 
     @Override
@@ -107,7 +118,6 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section1),
                         getString(R.string.title_section2),
                         getString(R.string.title_section3),
-                        getString(R.string.title_section4),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 
@@ -202,6 +212,7 @@ public class NavigationDrawerFragment extends Fragment {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
         if (mCallbacks != null) {
+            Log.i("NavigationDrawer", "selectItem onNavigationDrawerItemSelected");
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
     }

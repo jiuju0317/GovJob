@@ -13,7 +13,7 @@ import com.stone.myclass.Common;
 import com.stone.myclass.NavigationDrawerFragment;
 
 
-public class QueryJob extends ActionBarActivity
+public class About extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     //region NavigationDrawerFragment..這段不要修改
@@ -53,7 +53,7 @@ public class QueryJob extends ActionBarActivity
     }
 
     public void restoreActionBar() {
-        Log.i("QueryJob", "restoreActionBar");
+        Log.i("About", "restoreActionBar");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
@@ -63,7 +63,7 @@ public class QueryJob extends ActionBarActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            Log.i("QueryJob", "onCreateOptionsMenu change layout");
+            Log.i("About", "onCreateOptionsMenu change layout");
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
@@ -76,7 +76,7 @@ public class QueryJob extends ActionBarActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.i("QueryJob", "onOptionsItemSelected");
+        Log.i("About", "onOptionsItemSelected");
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -99,7 +99,7 @@ public class QueryJob extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drawer);
 
-        Log.i("QueryJob", "onCreate");
+        Log.i("About", "onCreate");
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
