@@ -230,7 +230,7 @@ public class QueryJob extends ActionBarActivity
                             +" OR "+JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+arrWorkPlace[30]+"%'"
                             +") AND ";
                 }else{
-                    queryWorkPlace = JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+queryWorkPlace+"%' ";
+                    queryWorkPlace = JobDAO.COLUMN_WORK_PLACE_TYPE+" LIKE '%"+queryWorkPlace+"%' AND ";
                 }
 
 
