@@ -2,6 +2,7 @@ package com.stone.govjob;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.stone.myclass.Common;
 import com.stone.myclass.Job;
@@ -272,6 +274,7 @@ public class QueryJob extends ActionBarActivity
                 where = where + where_keyword;
             }
 
+            /*
             ArrayList<Job> queryResults = jobDAO.queryJob(where);
 
             if(queryResults != null){
@@ -284,6 +287,22 @@ public class QueryJob extends ActionBarActivity
             }else{
                 Log.i("queryResults","queryResults = null!!");
             }
+            */
+
+            ArrayList<Job> queryResults = jobDAO.queryJob(where);
+
+            int cnt = jobDAO.getCount(where);
+
+            if (cnt > 0) {
+                Intent go = new Intent(QueryJob.this, JobList.class);
+                go.putExtra("where", where);
+                QueryJob.this.startActivity(go);
+                //((Activity)QueryJob.this).finish();
+            }
+            else{
+                Toast.makeText(QueryJob.this, "查無資料!請重新查詢!", Toast.LENGTH_SHORT).show();
+            }
+
 
         }
     }

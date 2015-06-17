@@ -251,29 +251,29 @@ public class Job implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return  "ID="+_id
-                +"--ORG_NAME="+orgName
-                +"--PERSON_KIND="+personKind
-                +"--RANK="+rank
-                +"--TITLE="+title
-                +"--SYSNAM="+sysnam
-                +"--NUMBER_OF="+numberOf
-                +"--GENDER_TYPE="+genderType
-                +"--WORK_PLACE_TYPE="+workPlaceType
-                +"--DATE_FROM="+dateFrom
-                +"--DATE_TO="+dateTo
-                +"--isHandicap="+isHandicap
-                +"--isOriginal="+isOriginal
-                +"--isLocalOriginal="+isLocalOriginal
-                +"--isTraning="+isTraning
-                +"--type="+type
-                +"--vitaeEmail="+vitaeEmail
-                +"--workQuality="+workQuality
-                +"--workItem="+workItem
-                +"--workAddress="+workAddress
-                +"--contactMethod="+contactMethod
-                +"--urlLink="+urlLink
-                +"--viewUrl="+viewUrl
+        return  "ID="+_id +"\n"
+                +"--ORG_NAME="+orgName  +"\n"
+                +"--PERSON_KIND="+personKind +"\n"
+                +"--RANK="+rank +"\n"
+                +"--TITLE="+title+"\n"
+                +"--SYSNAM="+sysnam+"\n"
+                +"--NUMBER_OF="+numberOf+"\n"
+                +"--GENDER_TYPE="+genderType+"\n"
+                +"--WORK_PLACE_TYPE="+workPlaceType+"\n"
+                +"--DATE_FROM="+dateFrom+"\n"
+                +"--DATE_TO="+dateTo+"\n"
+                +"--isHandicap="+isHandicap+"\n"
+                +"--isOriginal="+isOriginal+"\n"
+                +"--isLocalOriginal="+isLocalOriginal+"\n"
+                +"--isTraning="+isTraning+"\n"
+                +"--type="+type+"\n"
+                +"--vitaeEmail="+vitaeEmail+"\n"
+                +"--workQuality="+workQuality+"\n"
+                +"--workItem="+workItem+"\n"
+                +"--workAddress="+workAddress+"\n"
+                +"--contactMethod="+contactMethod+"\n"
+                +"--urlLink="+urlLink+"\n"
+                +"--viewUrl="+viewUrl+"\n"
                 +"\n==========\n";
     }
 

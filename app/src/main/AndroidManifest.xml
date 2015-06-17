@@ -34,6 +34,10 @@
             android:name="com.stone.govjob.Favorite"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.stone.govjob.JobDetail"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

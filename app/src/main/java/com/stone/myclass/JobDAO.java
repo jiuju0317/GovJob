@@ -78,6 +78,34 @@ public class JobDAO  {
     public static final String CREATE_ANNOTABLE =
             "CREATE TABLE "+TABLE_NAME_ANNO+"(ANNOUNCE_DATE INTEGER);" ;
 
+    // 我的最愛
+    public static final String CREATE_FAVORITE =
+            "CREATE TABLE " + TABLE_NAME + " (" +
+                    KEY_ID + " INTEGER PRIMARY KEY UNIQUE, " +
+                    COLUMN_ORG_NAME+" TEXT,"+
+                    COLUMN_PERSON_KIND+" TEXT,"+
+                    COLUMN_RANK+" TEXT,"+
+                    COLUMN_TITLE+" TEXT,"+
+                    COLUMN_SYSNAM+" TEXT,"+
+                    COLUMN_NUMBER_OF+" TEXT,"+
+                    COLUMN_GENDER_TYPE+" TEXT,"+
+                    COLUMN_WORK_PLACE_TYPE+" TEXT,"+
+                    COLUMN_DATE_FROM+" DATETIME,"+
+                    COLUMN_DATE_TO+" DATETIME,"+
+                    COLUMN_IS_HANDICAP+" BOOL,"+
+                    COLUMN_IS_ORIGINAL+" BOOL,"+
+                    COLUMN_IS_LOCAL_ORIGINAL+" BOOL,"+
+                    COLUMN_IS_TRANING+" BOOL,"+
+                    COLUMN_TYPE+" TEXT,"+
+                    COLUMN_VITAE_EMAIL+" TEXT,"+
+                    COLUMN_WORK_QUALITY+" TEXT,"+
+                    COLUMN_WORK_ITEM+" TEXT,"+
+                    COLUMN_WORK_ADDRESS+" TEXT,"+
+                    COLUMN_CONTACT_METHOD+" TEXT,"+
+                    COLUMN_URL_LINK+" TEXT,"+
+                    COLUMN_VIEW_URL+" TEXT"+
+                    ");";
+
     // 資料庫物件
     private SQLiteDatabase db;
 
