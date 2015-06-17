@@ -9,3 +9,13 @@
 /.idea/gradle.xml
 /app/app.iml
 /.idea/encodings.xml
+
+.idea/gradle.xml
+
+app/build.gradle
+
+.idea/misc.xml
+
+.idea/gradle.xml
+
+app/src/main/AndroidManifest.xml
