@@ -16,6 +16,8 @@ import java.util.Date;
  * Created by meamea on 2015/6/12.
  */
 public class JobDAO  {
+    //Text shorten length
+    int textLength = 20;
 
     // 表格名稱
     public static final String TABLE_NAME = "job";
@@ -77,6 +79,8 @@ public class JobDAO  {
                     ");";
     public static final String CREATE_ANNOTABLE =
             "CREATE TABLE "+TABLE_NAME_ANNO+"(ANNOUNCE_DATE INTEGER);" ;
+
+
 
     // 資料庫物件
     private SQLiteDatabase db;
@@ -186,7 +190,7 @@ public class JobDAO  {
                 TABLE_NAME, null, null, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
-            result.add(getRecord(cursor));
+            result.add(getRecord(cursor,-1));
         }
 
         cursor.close();
@@ -206,7 +210,7 @@ public class JobDAO  {
         // 如果有查詢結果
         if (result.moveToFirst()) {
             // 讀取包裝一筆資料的物件
-            job = getRecord(result);
+            job = getRecord(result,-1);
         }
 
         // 關閉Cursor物件
@@ -223,7 +227,7 @@ public class JobDAO  {
         Cursor cursor = db.rawQuery(where, null);
 
         while (cursor.moveToNext()) {
-            result.add(getRecord(cursor));
+            result.add(getRecord(cursor,textLength));
         }
 
         cursor.close();
@@ -231,7 +235,9 @@ public class JobDAO  {
     }
 
     // 把Cursor目前的資料包裝為物件
-    public Job getRecord(Cursor cursor) {
+    public Job getRecord(Cursor cursor,int textLength) {
+        String tempWorkQuality="",tempWorkItem="",tempContactMethod="",tempWorkPlaceType="";
+
         // 準備回傳結果用的物件
         Job result = new Job();
 
@@ -243,7 +249,11 @@ public class JobDAO  {
         result.setSysnam(cursor.getString(5));
         result.setNumberOf(cursor.getString(6));
         result.setGenderType(cursor.getString(7));
-        result.setWorkPlaceType(cursor.getString(8));
+
+        if(cursor.getString(8) != null) {
+            tempWorkPlaceType = cursor.getString(8).substring(1);
+        }
+        result.setWorkPlaceType(tempWorkPlaceType);
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date dateFrom = null,dateTo = null;
@@ -263,10 +273,35 @@ public class JobDAO  {
         result.setIsTraning(cursor.getInt(14) > 0);
         result.setType(cursor.getString(15));
         result.setVitaeEmail(cursor.getString(16));
-        result.setWorkQuality(cursor.getString(17));
-        result.setWorkItem(cursor.getString(18));
+
+        if(textLength!=-1){
+            if(cursor.getString(17) != null) {
+                if (cursor.getString(17).length() < textLength) {
+                    tempWorkQuality = cursor.getString(17);
+                } else {
+                    tempWorkQuality = cursor.getString(17).substring(0, textLength) + "...";
+                }
+            }
+            if(cursor.getString(18) != null) {
+                if (cursor.getString(18).length() < textLength) {
+                    tempWorkItem = cursor.getString(18);
+                } else {
+                    tempWorkItem = cursor.getString(18).substring(0, textLength) + "...";
+                }
+            }
+            if(cursor.getString(20) != null) {
+                if (cursor.getString(20).length() < textLength) {
+                    tempContactMethod = cursor.getString(20);
+                } else {
+                    tempContactMethod = cursor.getString(20).substring(0, textLength) + "...";
+                }
+            }
+        }
+
+        result.setWorkQuality(tempWorkQuality);
+        result.setWorkItem(tempWorkItem);
         result.setWorkAddress(cursor.getString(19));
-        result.setContactMethod(cursor.getString(20));
+        result.setContactMethod(tempContactMethod);
         result.setUrlLink(cursor.getString(21));
         result.setViewUrl(cursor.getString(22));
 
