@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="id"
+        android:id="@+id/id" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="職位名稱"
+        android:id="@+id/title_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:text="科員" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="職系"
+        android:id="@+id/sysnam_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sysnam"
+        android:text="一般行政" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="徵才機關"
+        android:id="@+id/org_Name_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/org_name"
+        android:text="制裁局" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="工作地點"
+            android:id="@+id/work_place_S"
+            android:background="#008000"
+            android:textColor="#dedede" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/work_place"
+        android:text="台北市" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:text="工作地址"
+            android:id="@+id/WORK_ADDRESS_S"
+            android:background="#008000"
+            android:textColor="#dedede"
+            android:layout_weight="1.02" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="地圖標示"
+            android:id="@+id/button11"
+            android:onClick="gotomap"
+            android:textSize="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/WORK_ADDRESS"
+        android:text="台北市嘰歪路" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="官職等"
+        android:id="@+id/RANK_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RANK"
+        android:text="六職等" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="官等類別"
+        android:id="@+id/type_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/type"
+        android:text="薦任" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="名額"
+        android:id="@+id/NUMBER_OF_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/NUMBER_OF"
+        android:text="1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="性別"
+        android:id="@+id/GENDER_TYPE_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/GENDER_TYPE"
+        android:text="一般" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="發佈日期"
+        android:id="@+id/DATE_FROM_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DATE_FROM"
+        android:text="1040609" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="截止日期"
+        android:id="@+id/DATE_TO_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DATE_TO"
+        android:text="1040609" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="入職條件"
+        android:id="@+id/WORK_QUALITY_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/WORK_QUALITY"
+        android:text="歡迎身心障礙人員參加甄選。" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="工作項目"
+        android:id="@+id/WORK_ITEM_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/WORK_ITEM"
+        android:text="綜合研考、預概算編列" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="聯絡方式"
+        android:id="@+id/CONTACT_METHOD_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CONTACT_METHOD"
+        android:text="報名方式：" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="行政院職缺資料連結"
+        android:id="@+id/VIEW_URL_S"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/VIEW_URL"
+        android:text="http://" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="備註"
+        android:id="@+id/textView10"
+        android:background="#008000"
+        android:textColor="#dedede" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11" />
+
+
+
+</LinearLayout>
+</ScrollView>

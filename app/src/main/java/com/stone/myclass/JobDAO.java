@@ -22,6 +22,7 @@ public class JobDAO  {
     // 表格名稱
     public static final String TABLE_NAME = "job";
     public static final String TABLE_NAME_ANNO = "dbannodate";
+    public static final String TABLE_NAME_FAVORITE = "favorite";
 
     // 編號表格欄位名稱，固定不變
     public static final String KEY_ID = "_id";
@@ -80,10 +81,10 @@ public class JobDAO  {
     public static final String CREATE_ANNOTABLE =
             "CREATE TABLE "+TABLE_NAME_ANNO+"(ANNOUNCE_DATE INTEGER);" ;
 
-<<<<<<< HEAD
+
     // 我的最愛
     public static final String CREATE_FAVORITE =
-            "CREATE TABLE " + TABLE_NAME + " (" +
+            "CREATE TABLE " + TABLE_NAME_FAVORITE + " (" +
                     KEY_ID + " INTEGER PRIMARY KEY UNIQUE, " +
                     COLUMN_ORG_NAME+" TEXT,"+
                     COLUMN_PERSON_KIND+" TEXT,"+
@@ -108,9 +109,7 @@ public class JobDAO  {
                     COLUMN_URL_LINK+" TEXT,"+
                     COLUMN_VIEW_URL+" TEXT"+
                     ");";
-=======
 
->>>>>>> aae5188be1c7a2309200f8d19568bbae9e1f91ac
 
     // 資料庫物件
     private SQLiteDatabase db;

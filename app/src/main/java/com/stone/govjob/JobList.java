@@ -42,9 +42,6 @@ import java.util.ArrayList;
 
 public class JobList extends Activity {
 
-       //從這裡開始寫Code
-
-
     ArrayList<Job> xmljobs,queryResults;
     int annoDate;
     private JobDAO jobDAO;
@@ -60,21 +57,12 @@ public class JobList extends Activity {
     };
 
 
-
-
     ListView listView ;
 
     private Context context;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.navigation_drawer);
-
-        Log.i("About", "onCreate");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.arraylisttomap2);
         listView =(ListView) findViewById(R.id.listView);
@@ -83,60 +71,65 @@ public class JobList extends Activity {
         context = this;
 
         jobDAO = new JobDAO(getApplicationContext());
+
+
         String where = this.getIntent().getExtras().getString("where");
         ArrayList<Job> jobs = jobDAO.queryJob(where);
 
-//        System.out.println("------------>" + jobs.size());
-//
-//        Job job = jobs.get(1);
-//        System.out.println("------------>" + job.get_id());
-//        System.out.println("------------>" + job.getTitle());
-
-
-         listView.setAdapter(new JobsAdapter(context,jobs));
 
 
 
 
 
-      /*
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                // TODO Auto-generated method stub
-
-                ListView listView = (ListView) adapterView;
-
-                Intent intent = new Intent();
 
 
-                intent.putExtra("address",listView.getItemAtPosition(i).toString());
+/*
+        Job job = jobs.get(1);
 
-
-                intent.setClass(arraylistToMap2.this, arraylistToMap_markSingle.class);
-
-                startActivityForResult(intent, 3234);
-
-            }
-        });
+        Date date =job.getDateFrom();
+     //   SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = sdf.format(date);
+        System.out.println(dateString);
 */
+        //  System.out.println("------------>" + job.getTitle());
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                LinearLayout listView = (LinearLayout) view;
-                String id = (String) ((TextView)listView.findViewById(R.id.id)).getText();
 
-                Intent intent = new Intent();
-                intent.putExtra("id", id);
+        listView.setAdapter(new JobsAdapter(context, jobs));
 
-                intent.setClass(JobList.this, JobDetail.class);
-                startActivityForResult(intent, 3234);
-            }
-        });
 
+        listView.setOnItemClickListener(new MyOnItemClickListener());
     }//end onCreate
+
+
+
+
+    private class MyOnItemClickListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+            Job coffee = (Job)parent.getItemAtPosition(position);
+
+            Intent intent = new Intent();
+            intent.setClass(JobList.this, JobDetail.class);
+            intent.putExtra("job_id", coffee.get_id());
+            startActivityForResult(intent, 3234);
+
+                 /*
+                // 取得被點選之資料
+                Job coffee = (Job)parent.getItemAtPosition(position);
+                // 取出資料id, title
+                String msg = "您選的是:" + coffee.get_id() + ", title" + coffee.getTitle();
+                // Toast 顯示
+                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+              */
+
+
+
+        }
+    }
+
+
 
 }
