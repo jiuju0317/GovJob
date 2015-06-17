@@ -310,9 +310,12 @@ public class JobDAO  {
     }
 
     // 取得資料數量
-    public int getCount() {
+    public int getCount(String where) {
         int result = 0;
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_NAME, null);
+
+        where = "SELECT COUNT(*) FROM "+TABLE_NAME+ " WHERE " + where + ";";
+
+        Cursor cursor = db.rawQuery(where, null);
 
         if (cursor.moveToNext()) {
             result = cursor.getInt(0);
