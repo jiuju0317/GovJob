@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="#ffff00"
+    android:weightSum="3"
+    android:padding="5px">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="1"
+                android:id="@+id/id"
+                android:textSize="15dp"
+                android:textColor="#FF0000"
+                android:background="#aabbcc"
+                android:layout_weight="0.11" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="刊登日期"
+                android:id="@+id/datefrom"
+                android:layout_weight="0.89"
+                android:textSize="15dp"
+                android:textColor="#00FF00"
+                android:background="#ff7700" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="title"
+                android:id="@+id/title"
+                android:textSize="20dp"
+                android:textColor="#000fff"
+                android:background="#008000"
+                android:textIsSelectable="false"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="sysnam"
+                android:id="@+id/sysnam"
+                android:layout_weight="0.5"
+                android:textColor="#dedede"
+                android:textSize="20dp"
+                android:background="#456789" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="orgname"
+            android:id="@+id/orgname"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:background="#d8bfd8"
+            android:textIsSelectable="false"
+            android:layout_gravity="center_horizontal|left" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="workplace"
+            android:id="@+id/workplace"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:background="#d8bfd8"
+            android:textIsSelectable="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="deadline"
+            android:id="@+id/deadline"
+            android:textSize="15dp"
+            android:textColor="#000000"
+            android:background="#d8bfd8"
+            android:textIsSelectable="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="workquality"
+            android:id="@+id/workquality"
+            android:textSize="12dp"
+            android:textColor="#000000"
+            android:background="#7fffd4"
+            android:textIsSelectable="false" />
+    </LinearLayout>
+</LinearLayout>

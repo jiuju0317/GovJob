@@ -26,7 +26,7 @@
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAo33uYnLXYTQAZWj4EqBpcT7xrJoKJ0v0" />
+            android:value="AIzaSyCR4QJDV80uzlZI4eEWo_5PoSZEAr0faiE" />
 
 
         <meta-data
@@ -53,7 +53,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.stone.govjob.Favorite"
+            android:name=".FavoriteList"
             android:label="@string/app_name" >
         </activity>
 
@@ -69,7 +69,7 @@
         </activity>
 
         <activity
-            android:name="com.stone.govjob.arraylistToMap_markSingle"
+            android:name=".JobDetail_Map"
             android:label="@string/app_name" >
         </activity>
 
