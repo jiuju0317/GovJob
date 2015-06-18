@@ -288,7 +288,7 @@ public class QueryJob extends ActionBarActivity
             }
             */
 
-            ArrayList<Job> queryResults = jobDAO.queryJob(where);
+            //ArrayList<Job> queryResults = jobDAO.queryJob(where);
 
             int cnt = jobDAO.getCount(where);
 

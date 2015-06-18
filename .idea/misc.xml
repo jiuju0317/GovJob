@@ -3,8 +3,6 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
-<<<<<<< HEAD
-=======
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -12,7 +10,6 @@
       </MavenGeneralSettings>
     </option>
   </component>
->>>>>>> ed89bec547dee9996b44a3d540a6f17f8143b843
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
