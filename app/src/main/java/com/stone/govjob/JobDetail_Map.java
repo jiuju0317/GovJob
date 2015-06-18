@@ -11,19 +11,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.stone.myclass.LatLngQuery;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
 
 
@@ -54,6 +46,8 @@ public class JobDetail_Map extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jobdetail_map);
         mMap=setUpMapIfNeeded(mMap);
+
+        LatLngQuery latLngQuery = new LatLngQuery();
         //   textView = (TextView) findViewById(R.id.textView7);
        /*  String kk = this.getIntent().getExtras().getString("address");
 
@@ -76,7 +70,7 @@ public class JobDetail_Map extends FragmentActivity {
 
 
 
-        latLngReturn=returnLatLng (string);
+        latLngReturn=latLngQuery.returnLatLng (string);
         // string = GoogleMapURLModify(string);
         // textView.setText(add);
 
@@ -198,7 +192,7 @@ public class JobDetail_Map extends FragmentActivity {
 
 
 
-
+/*
 //    private void setUpMap() {
 //        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
 //    }
@@ -321,6 +315,8 @@ public class JobDetail_Map extends FragmentActivity {
         return  latLng ;
 
     }//end function returnLatLng
+
+    */
 
 /////////////////////////////////////////////////////////////
 

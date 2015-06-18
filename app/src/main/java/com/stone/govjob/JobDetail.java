@@ -9,9 +9,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.stone.myclass.Job;
 import com.stone.myclass.JobDAO;
+import com.stone.myclass.LatLngQuery;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -178,24 +183,27 @@ public class JobDetail extends Activity {
 */
 
     public void  gotomap (View view){
+        LatLngQuery latLngQuery = new LatLngQuery();
+        System.out.println("--------touch---->");
+        String address = null;
 
+        try {
+            address = URLEncoder.encode(job.getWorkAddress(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
- System.out.println("--------touch---->");
+        if(latLngQuery.returnLatLng(address)!=null) {
 
+            Intent intent = new Intent();
+            intent.putExtra("address", job.getWorkAddress());
+            intent.setClass(JobDetail.this, JobDetail_Map.class);
 
-        Intent intent = new Intent();
+            startActivityForResult(intent, 3234);
 
-
-        intent.putExtra("address",job.getWorkAddress());
-
-
-        intent.setClass(JobDetail.this, JobDetail_Map.class);
-
-        startActivityForResult(intent, 3234);
-
-
-
-
+        }else{
+            Toast.makeText(JobDetail.this, "此地址無法查詢。", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
