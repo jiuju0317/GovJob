@@ -20,15 +20,14 @@
             android:weightSum="1">
 
             <TextView
-                android:layout_width="110dp"
+                android:layout_width="98dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="1"
                 android:id="@+id/id"
                 android:textSize="15dp"
                 android:textColor="#FF0000"
-                android:background="#aabbcc"
-                android:layout_weight="0.11" />
+                android:background="#aabbcc" />
 
             <TextView
                 android:layout_width="wrap_content"

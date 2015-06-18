@@ -20,23 +20,21 @@
             android:weightSum="1">
 
             <TextView
-                android:layout_width="110dp"
+                android:layout_width="101dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="1"
                 android:id="@+id/id"
                 android:textSize="15dp"
                 android:textColor="#FF0000"
-                android:background="#aabbcc"
-                android:layout_weight="0.11" />
+                android:background="#aabbcc" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="刊登日期"
                 android:id="@+id/datefrom"
-                android:layout_weight="0.89"
                 android:textSize="15dp"
                 android:textColor="#00FF00"
                 android:background="#ff7700" />

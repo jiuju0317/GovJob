@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.stone.govjob.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -92,13 +93,22 @@ public class FavoriteAdapter extends BaseAdapter{
 
    */
 
+
+        String datefromS =new SimpleDateFormat("yyyy-MM-dd").format(job.getDateFrom());
+        String a ="刊登日期:";
+        a = a+datefromS;
+
+        String dateToS =new SimpleDateFormat("yyyy-MM-dd").format(job.getDateTo());
+        String b ="截止日期:";
+        b = b+dateToS;
+
         holder.id.setText(Integer.toString(job.get_id()));
-        holder.datefrom.setText(null);
+        holder.datefrom.setText(a);
         holder.title.setText(job.getTitle());
         holder.sysnam.setText(job.getSysnam());
         holder.orgname.setText(job.getOrgName());
         holder.workplace.setText(job.getWorkPlaceType());
-        holder.deadline.setText(null);
+        holder.deadline.setText(b);
         holder.workquality.setText(job.getWorkQuality());
 
         return convertview;
