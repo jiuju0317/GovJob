@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.stone.myclass.Job;
 import com.stone.myclass.JobDAO;
@@ -59,7 +60,7 @@ public class JobList extends Activity {
 
     ListView listView ;
 
-    private Context context;
+    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +154,8 @@ public class JobList extends Activity {
     */
 
     public static void FavoriteInsert(Job job){
+
         jobDAO.insertFavorite(job);
+        Toast.makeText(context, "已加入我的最愛", Toast.LENGTH_SHORT).show();
     }
 }
