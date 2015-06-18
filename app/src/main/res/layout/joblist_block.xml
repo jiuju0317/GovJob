@@ -40,6 +40,15 @@
                 android:textSize="15dp"
                 android:textColor="#00FF00"
                 android:background="#ff7700" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="我的最愛"
+                android:id="@+id/btnFavorite"
+                android:onClick="btnFavorite_Click"
+                android:focusable="false"
+                android:nestedScrollingEnabled="true" />
         </LinearLayout>
 
         <LinearLayout

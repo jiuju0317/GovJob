@@ -15,8 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.stone.govjob.About;
-import com.stone.govjob.Favorite;
-import com.stone.govjob.MainActivity;
+import com.stone.govjob.FavoriteList;
 import com.stone.govjob.QueryJob;
 import com.stone.govjob.R;
 
@@ -101,15 +100,15 @@ public class Common {
                 case 2:
                     //第一次進入該頁面..只需要設定Layout
                     if (Common.isNavigationDrawerFragmentCreate) {
-                        Log.i("Common", "設定Layout favorite");
+                        Log.i("Common", "設定Layout favorite_list");
                         //切換Layout
-                        rootView = inflater.inflate(R.layout.favorite, container, false);
+                        rootView = inflater.inflate(R.layout.favorite_list, container, false);
                     }
                     //之後再觸發表示要切換Intent..
                     else {
-                        Log.i("Common", "切換Intent favorite");
+                        Log.i("Common", "切換Intent Favorite");
                         //切換Activity
-                        go = new Intent(_context, Favorite.class);
+                        go = new Intent(_context, FavoriteList.class);
                         this.startActivity(go);
                         ((Activity)_context).finish();
                     }
@@ -163,10 +162,10 @@ public class Common {
                     ((About)activity).onSectionAttached(
                             getArguments().getInt(ARG_SECTION_NUMBER));
                     break;
-                case "Favorite" :
+                case "FavoriteList" :
                     Log.i("Common", "onAttach Favorite");
                     super.onAttach(activity);
-                    ((Favorite)activity).onSectionAttached(
+                    ((FavoriteList)activity).onSectionAttached(
                             getArguments().getInt(ARG_SECTION_NUMBER));
                     break;
             }

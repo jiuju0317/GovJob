@@ -1,5 +1,6 @@
 package com.stone.govjob;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -8,12 +9,25 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.stone.myclass.Common;
+import com.stone.myclass.FavoriteAdapter;
+import com.stone.myclass.Job;
+import com.stone.myclass.JobDAO;
+import com.stone.myclass.JobsAdapter;
 import com.stone.myclass.NavigationDrawerFragment;
 
+import java.util.ArrayList;
 
-public class Favorite extends ActionBarActivity
+
+public class FavoriteList extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     //region NavigationDrawerFragment..這段不要修改
@@ -28,6 +42,18 @@ public class Favorite extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+
+    //View rootview;
+    ArrayList<Job> xmljobs,queryResults;
+    int annoDate;
+    private JobDAO jobDAO;
+    String queryWorkPlace, queryPersonKind,queryKeyWord;
+
+    Spinner workPlace_spn,personKind_spn;
+    EditText keyWord_edt;
+    ArrayAdapter workPlace_adp,personKind_adp;
+    Button query_btn;
+
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -109,6 +135,47 @@ public class Favorite extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        // 建立資料庫物件
+        jobDAO = new JobDAO(getApplicationContext());
     }
 
+    public void onResume() {
+
+        //ArrayList<Job> jobs = jobDAO.getAll();
+        ArrayList<Job> jobs = jobDAO.queryAllFavorite();
+
+        ListView listView =(ListView)Common.rootView.findViewById(R.id.listView);
+
+        listView.setAdapter(new FavoriteAdapter(this, jobs));
+
+        listView.setOnItemClickListener(new MyOnItemClickListener());
+
+        super.onResume();
+    }
+
+    private class MyOnItemClickListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+            Job coffee = (Job)parent.getItemAtPosition(position);
+
+            Intent intent = new Intent();
+            intent.setClass(FavoriteList.this, JobDetail.class);
+            intent.putExtra("job_id", coffee.get_id());
+            startActivityForResult(intent, 3234);
+
+                 /*
+                // 取得被點選之資料
+                Job coffee = (Job)parent.getItemAtPosition(position);
+                // 取出資料id, title
+                String msg = "您選的是:" + coffee.get_id() + ", title" + coffee.getTitle();
+                // Toast 顯示
+                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+              */
+
+        }
+    }
 }
+

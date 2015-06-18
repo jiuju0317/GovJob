@@ -44,7 +44,7 @@ public class JobList extends Activity {
 
     ArrayList<Job> xmljobs,queryResults;
     int annoDate;
-    private JobDAO jobDAO;
+    private static JobDAO jobDAO;
     private ProgressDialog progressDialog;
     private Handler handler = new Handler() {
         @Override
@@ -64,7 +64,7 @@ public class JobList extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.arraylisttomap2);
+        setContentView(R.layout.joblist);
         listView =(ListView) findViewById(R.id.listView);
 
 
@@ -130,6 +130,29 @@ public class JobList extends Activity {
         }
     }
 
+    /*
+    public void  btnFavorite_Click (View view){
 
 
+
+        Job coffee = (Job)parent.getItemAtPosition(position);
+
+        System.out.println("--------touch---->");
+
+
+        Intent intent = new Intent();
+
+
+        intent.putExtra("address",job.getWorkAddress());
+
+
+        intent.setClass(JobDetail.this, JobDetail_Map.class);
+
+        startActivityForResult(intent, 3234);
+    }
+    */
+
+    public static void FavoriteInsert(Job job){
+        jobDAO.insertFavorite(job);
+    }
 }
