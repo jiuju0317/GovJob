@@ -388,6 +388,10 @@ public class JobDAO  {
                     tempContactMethod = cursor.getString(20).substring(0, textLength) + "...";
                 }
             }
+        }else{
+            tempWorkQuality = cursor.getString(17);
+            tempWorkItem = cursor.getString(18);
+            tempContactMethod = cursor.getString(20);
         }
 
         result.setWorkQuality(tempWorkQuality);
