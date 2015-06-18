@@ -212,6 +212,69 @@ public class JobDAO  {
         return db.delete(TABLE_NAME, where , null) > 0;
     }
 
+    // 新增參數指定的物件
+    public Job insertFavorite(Job job) {
+        // 建立準備新增資料的ContentValues物件
+        ContentValues cv = new ContentValues();
+
+        // 加入ContentValues物件包裝的新增資料
+        // 第一個參數是欄位名稱， 第二個參數是欄位的資料
+        cv.put(KEY_ID, job.get_id());
+        cv.put(COLUMN_ORG_NAME,job.getOrgName());
+        cv.put(COLUMN_PERSON_KIND,job.getPersonKind());
+        cv.put(COLUMN_RANK,job.getRank());
+        cv.put(COLUMN_TITLE,job.getTitle());
+        cv.put(COLUMN_SYSNAM,job.getSysnam());
+        cv.put(COLUMN_NUMBER_OF,job.getNumberOf());
+        cv.put(COLUMN_GENDER_TYPE,job.getGenderType());
+        cv.put(COLUMN_WORK_PLACE_TYPE,job.getWorkPlaceType());
+        cv.put(COLUMN_DATE_FROM, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(job.getDateFrom()));
+        cv.put(COLUMN_DATE_TO, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(job.getDateTo()));
+        cv.put(COLUMN_IS_HANDICAP,job.isHandicap());
+        cv.put(COLUMN_IS_ORIGINAL,job.isOriginal());
+        cv.put(COLUMN_IS_LOCAL_ORIGINAL,job.isLocalOriginal());
+        cv.put(COLUMN_IS_TRANING,job.isTraning());
+        cv.put(COLUMN_TYPE,job.getType());
+        cv.put(COLUMN_VITAE_EMAIL,job.getVitaeEmail());
+        cv.put(COLUMN_WORK_QUALITY,job.getWorkQuality());
+        cv.put(COLUMN_WORK_ITEM,job.getWorkItem());
+        cv.put(COLUMN_WORK_ADDRESS,job.getWorkAddress());
+        cv.put(COLUMN_CONTACT_METHOD,job.getContactMethod());
+        cv.put(COLUMN_URL_LINK,job.getUrlLink());
+        cv.put(COLUMN_VIEW_URL,job.getViewUrl());
+
+        // 新增一筆資料
+        // 第一個參數是表格名稱
+        // 第二個參數是沒有指定欄位值的預設值
+        // 第三個參數是包裝新增資料的ContentValues物件
+        db. insertWithOnConflict(TABLE_NAME_FAVORITE, null, cv,SQLiteDatabase.CONFLICT_IGNORE);
+
+        // 回傳結果
+        return job;
+    }
+
+    // 刪除參數指定編號的資料
+    public boolean deleteFavorite(int id){
+        // 設定條件為編號，格式為「欄位名稱=資料」
+        String where = KEY_ID + "=" + id;
+        // 刪除指定編號資料並回傳刪除是否成功
+        return db.delete(TABLE_NAME_FAVORITE, where , null) > 0;
+    }
+
+    // 讀取所有記事資料
+    public ArrayList<Job> queryAllFavorite() {
+        ArrayList<Job> result = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME_FAVORITE, null, null, null, null, null, null, null);
+
+        while (cursor.moveToNext()) {
+            result.add(getRecord(cursor,-1));
+        }
+
+        cursor.close();
+        return result;
+    }
+
     // 讀取所有記事資料
     public ArrayList<Job> getAll() {
         ArrayList<Job> result = new ArrayList<>();
@@ -325,6 +388,10 @@ public class JobDAO  {
                     tempContactMethod = cursor.getString(20).substring(0, textLength) + "...";
                 }
             }
+        }else{
+            tempWorkQuality = cursor.getString(17);
+            tempWorkItem = cursor.getString(18);
+            tempContactMethod = cursor.getString(20);
         }
 
         result.setWorkQuality(tempWorkQuality);

@@ -27,6 +27,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                     null, VERSION).getWritableDatabase();
         }
 
+        //database.execSQL(JobDAO.CREATE_FAVORITE);
         return database;
     }
 
@@ -42,7 +43,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         // 刪除原有的表格
         db.execSQL("DROP TABLE IF EXISTS " + JobDAO.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + JobDAO.TABLE_NAME_ANNO);
-        db.execSQL("DROP TABLE IF EXISTS " + JobDAO.CREATE_FAVORITE);
+        db.execSQL("DROP TABLE IF EXISTS " + JobDAO.TABLE_NAME_FAVORITE);
         // 呼叫onCreate建立新版的表格
         onCreate(db);
     }

@@ -89,11 +89,6 @@ public class JobDetail extends Activity {
         context = this;
 
         jobDAO = new JobDAO(getApplicationContext());
-        ArrayList<Job> jobs = jobDAO.getAll();
-
-        System.out.println("------------>" + jobs.size());
-
-
 
         int job_id;
         job_id = this.getIntent().getExtras().getInt("job_id");
@@ -194,7 +189,7 @@ public class JobDetail extends Activity {
         intent.putExtra("address",job.getWorkAddress());
 
 
-        intent.setClass(JobDetail.this, arraylistToMap_markSingle.class);
+        intent.setClass(JobDetail.this, JobDetail_Map.class);
 
         startActivityForResult(intent, 3234);
 

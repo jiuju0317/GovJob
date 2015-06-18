@@ -7,24 +7,20 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.stone.govjob.JobList;
 import com.stone.govjob.R;
 
 import java.util.ArrayList;
 
 
-
-
-
 /**
  * Created by Entrace on 2015/6/17.
  */
-public class JobsAdapter extends BaseAdapter{
+public class FavoriteAdapter extends BaseAdapter{
 
     private LayoutInflater myInflatter;
     private ArrayList<Job> jobs;
 
-    public JobsAdapter (Context context ,ArrayList<Job> list){
+    public FavoriteAdapter(Context context, ArrayList<Job> list){
 
         myInflatter=LayoutInflater.from(context);
         jobs=list;
@@ -58,7 +54,7 @@ public class JobsAdapter extends BaseAdapter{
         if (convertview == null){
 
 
-           convertview = myInflatter.inflate(R.layout.joblist_block,null);
+           convertview = myInflatter.inflate(R.layout.favorite_list_block,null);
            holder = new ViewHolder();
             holder.id = (TextView) convertview.findViewById(R.id.id);
             holder.datefrom = (TextView) convertview.findViewById(R.id.datefrom);
@@ -68,7 +64,6 @@ public class JobsAdapter extends BaseAdapter{
             holder.workplace = (TextView) convertview.findViewById(R.id.workplace);
             holder.deadline = (TextView) convertview.findViewById(R.id.deadline);
             holder.workquality= (TextView) convertview.findViewById(R.id.workquality);
-            holder.btnFavorite= (TextView) convertview.findViewById(R.id.btnFavorite);
 
             convertview.setTag(holder);
 
@@ -106,10 +101,6 @@ public class JobsAdapter extends BaseAdapter{
         holder.deadline.setText(null);
         holder.workquality.setText(job.getWorkQuality());
 
-
-        //設定按鈕監聽事件及傳入 MainActivity 實體
-        holder.btnFavorite.setOnClickListener(new ItemButton_Click(job));
-
         return convertview;
 
 
@@ -125,21 +116,6 @@ public class JobsAdapter extends BaseAdapter{
         TextView workplace;
         TextView deadline;
         TextView workquality;
-        TextView btnFavorite;
     }
-
-    class ItemButton_Click implements View.OnClickListener {
-        private Job job;
-
-        ItemButton_Click(Job job) {
-            this.job = job;
-        }
-
-        @Override
-        public void onClick(View v) {
-            JobList.FavoriteInsert(job);
-        }
-    }
-
 
 }// end JobsAdapter

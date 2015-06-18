@@ -150,7 +150,6 @@ public class QueryJob extends ActionBarActivity
     public void onResume() {
 
         query_btn = (Button) Common.rootView.findViewById(R.id.query_btn);
-        query_btn = (Button) Common.rootView.findViewById(R.id.query_btn);
 
         View.OnClickListener myListener = new beginQuery();
         query_btn.setOnClickListener(myListener);

@@ -34,7 +34,7 @@ import java.net.URLEncoder;
 
 //輸入中文地址取的google map JSON 檔案 解析 經緯度 之後在地圖上ＭＡＲＫ
 //整合函數
-public class arraylistToMap_markSingle extends FragmentActivity {
+public class JobDetail_Map extends FragmentActivity {
     TextView textView;
 
     //String add = "http://maps.googleapis.com/maps/api/geocode/json?address=";
@@ -52,7 +52,7 @@ public class arraylistToMap_markSingle extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.arraylisttomap_marksingle);
+        setContentView(R.layout.jobdetail_map);
         mMap=setUpMapIfNeeded(mMap);
         //   textView = (TextView) findViewById(R.id.textView7);
        /*  String kk = this.getIntent().getExtras().getString("address");
