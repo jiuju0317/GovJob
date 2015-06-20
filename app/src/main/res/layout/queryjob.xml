@@ -23,15 +23,15 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical"
         android:weightSum="3"
         android:layout_weight="1">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:text="@string/text_workplace"
             android:id="@+id/textView2"
@@ -40,7 +40,7 @@
             android:gravity="center" />
 
         <Spinner
-            android:layout_width="230dp"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
             android:id="@+id/workPlace_spn" />
 
@@ -48,14 +48,15 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:layout_gravity="center_horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:text="@string/text_person_kind"
             android:id="@+id/textView3"
@@ -64,21 +65,22 @@
             android:gravity="center" />
 
         <Spinner
-            android:layout_width="230dp"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
             android:id="@+id/personKind_spn" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_weight="1"
         android:weightSum="4"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_gravity="center_horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
             android:text="@string/text_key_word"
             android:id="@+id/textView4"
@@ -86,21 +88,22 @@
             android:gravity="center" />
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
             android:id="@+id/keyWord_edt" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_weight="1"
         android:weightSum="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_gravity="center_horizontal">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="@string/btn_query"
             android:id="@+id/query_btn"
