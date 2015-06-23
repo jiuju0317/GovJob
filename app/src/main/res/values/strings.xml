@@ -3,7 +3,8 @@
 
     <string name="title_section1">查詢職缺</string>
     <string name="title_section2">我的最愛</string>
-    <string name="title_section3">關於我們</string>
+    <string name="title_section3">公職考試日期表</string>
+    <string name="title_section4">關於我們</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -22,5 +23,5 @@
     <string name="mem_desc_02">陳希棟，本組組長，負責專案規劃和主畫面、查詢列表與明細畫面的開發與設計</string>
     <string name="mem_desc_03">博志，負責APP中Google Map相關應用功能的設計與開發</string>
     <string name="mem_desc_04">Allen，負責畫面切換與讀取偵測功能設計與部分版面規劃，以及總體APP呈現報告</string>
-    <string name="title_section4">Loading Test</string>
+
 </resources>

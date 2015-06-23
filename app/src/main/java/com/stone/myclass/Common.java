@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.stone.govjob.About;
 import com.stone.govjob.FavoriteList;
+import com.stone.govjob.OfficerExam;
 import com.stone.govjob.QueryJob;
 import com.stone.govjob.R;
 
@@ -29,7 +30,31 @@ public class Common {
     //紀錄上次Intent的位置..當第一次進入時..切換Layout時要帶入這個
     public static int sectionNumber = 1;
 
+    //紀錄目前的View
     public static View rootView = null;
+
+    //紀錄目前的Context
+    public static Context context = null;
+
+    //紀錄目前的title
+    public static CharSequence mTitle = null;
+
+    public static void onSectionAttached(int number) {
+        switch (number) {
+            case 1:
+                mTitle = context.getString(R.string.title_section1);
+                break;
+            case 2:
+                mTitle = context.getString(R.string.title_section2);
+                break;
+            case 3:
+                mTitle = context.getString(R.string.title_section3);
+                break;
+            case 4:
+                mTitle = context.getString(R.string.title_section4);
+                break;
+        }
+    }
 
     /**
      * A placeholder fragment containing a simple view.
@@ -41,7 +66,7 @@ public class Common {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        private static Context _context;
+        //private static Context _context;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -50,7 +75,7 @@ public class Common {
         public static PlaceholderFragment newInstance(int sectionNumber, Context context) {
             PlaceholderFragment fragment = new PlaceholderFragment();
 
-            _context = context;
+            Common.context = context;
 
             //將編號記錄起來
             Common.sectionNumber = sectionNumber;
@@ -92,28 +117,44 @@ public class Common {
                     else {
                         Log.i("Common", "切換Intent queryjob");
                         //切換Activity
-                        go = new Intent(_context, QueryJob.class);
+                        go = new Intent(Common.context, QueryJob.class);
                         this.startActivity(go);
-                        ((Activity)_context).finish();
+                        ((Activity)Common.context).finish();
                     }
                     break;
                 case 2:
                     //第一次進入該頁面..只需要設定Layout
                     if (Common.isNavigationDrawerFragmentCreate) {
-                        Log.i("Common", "設定Layout favorite_list");
+                        Log.i("Common", "設定Layout Favorite");
                         //切換Layout
-                        rootView = inflater.inflate(R.layout.favorite_list, container, false);
+                        rootView = inflater.inflate(R.layout.joblist, container, false);
                     }
                     //之後再觸發表示要切換Intent..
                     else {
-                        Log.i("Common", "切換Intent Favorite");
+                        Log.i("Common", "切換Intent FavoriteList");
                         //切換Activity
-                        go = new Intent(_context, FavoriteList.class);
+                        go = new Intent(Common.context, FavoriteList.class);
                         this.startActivity(go);
-                        ((Activity)_context).finish();
+                        ((Activity)Common.context).finish();
                     }
                     break;
                 case 3:
+                    //第一次進入該頁面..只需要設定Layout
+                    if (Common.isNavigationDrawerFragmentCreate) {
+                        Log.i("Common", "設定Layout OfficerExam");
+                        //切換Layout
+                        rootView = inflater.inflate(R.layout.joblist, container, false);
+                    }
+                    //之後再觸發表示要切換Intent..
+                    else {
+                        Log.i("Common", "切換Intent OfficerExam");
+                        //切換Activity
+                        go = new Intent(Common.context, OfficerExam.class);
+                        this.startActivity(go);
+                        ((Activity)Common.context).finish();
+                    }
+                    break;
+                case 4:
                     //第一次進入該頁面..只需要設定Layout
                     if (Common.isNavigationDrawerFragmentCreate) {
                         Log.i("Common", "設定Layout about");
@@ -124,9 +165,9 @@ public class Common {
                     else {
                         Log.i("Common", "切換Intent about");
                         //切換Activity
-                        go = new Intent(_context, About.class);
+                        go = new Intent(Common.context, About.class);
                         this.startActivity(go);
-                        ((Activity)_context).finish();
+                        ((Activity)Common.context).finish();
                     }
                     break;
             }
@@ -137,38 +178,42 @@ public class Common {
 
         @Override
         public void onAttach(Activity activity) {
+
+
+            super.onAttach(activity);
+            Common.onSectionAttached(
+                    getArguments().getInt(ARG_SECTION_NUMBER));
+
+
+
+            /*
             //Log.i("Common", activity.getComponentName().toString());
             Log.i("Common", activity.getLocalClassName());
             //Log.i("Common", activity.getPackageName());
 
-            switch (activity.getLocalClassName()){
-                /*
-                case "MainActivity" :
-                    Log.i("Common", "onAttach MainActivity");
-                    super.onAttach(activity);
-                    ((MainActivity)activity).onSectionAttached(
-                            getArguments().getInt(ARG_SECTION_NUMBER));
-                    break;
-                    */
-                case "QueryJob" :
+            switch (activity.getLocalClassName()) {
+
+                case "QueryJob":
                     Log.i("Common", "onAttach QueryJob");
                     super.onAttach(activity);
-                    ((QueryJob)activity).onSectionAttached(
+                    ((QueryJob) activity).onSectionAttached(
                             getArguments().getInt(ARG_SECTION_NUMBER));
                     break;
-                case "About" :
+                case "About":
                     Log.i("Common", "onAttach About");
                     super.onAttach(activity);
-                    ((About)activity).onSectionAttached(
+                    ((About) activity).onSectionAttached(
                             getArguments().getInt(ARG_SECTION_NUMBER));
                     break;
-                case "FavoriteList" :
-                    Log.i("Common", "onAttach Favorite");
+                case "FavoriteList":
+                    Log.i("Common", "onAttach FavoriteList");
                     super.onAttach(activity);
-                    ((FavoriteList)activity).onSectionAttached(
+                    ((FavoriteList) activity).onSectionAttached(
                             getArguments().getInt(ARG_SECTION_NUMBER));
                     break;
             }
+            */
+
         }
     }
 }

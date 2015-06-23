@@ -1,17 +1,13 @@
 package com.stone.govjob;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,7 +41,7 @@ public class QueryJob extends ActionBarActivity
      *
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
-    private CharSequence mTitle;
+    //private CharSequence mTitle;
 
     //View rootview;
     ArrayList<Job> xmljobs,queryResults;
@@ -71,26 +67,13 @@ public class QueryJob extends ActionBarActivity
                 .commit();
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
-    }
 
     public void restoreActionBar() {
         Log.i("QueryJob", "restoreActionBar");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+        actionBar.setTitle(Common.mTitle);
     }
 
     @Override
@@ -136,7 +119,7 @@ public class QueryJob extends ActionBarActivity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        //Common.mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -317,7 +300,7 @@ public class QueryJob extends ActionBarActivity
             case R.id.officer : // 測試Intent 換頁
 
 
-                intent.setClass(QueryJob.this, OfficerExam.class);
+                intent.setClass(QueryJob.this, OfficerExam_old.class);
 
                 startActivity(intent);
 

@@ -3,25 +3,36 @@ package com.stone.govjob;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.stone.myclass.Common;
 import com.stone.myclass.GovernmentOfficer;
+import com.stone.myclass.NavigationDrawerFragment;
 import com.stone.myclass.OfficerAdapter;
-
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-
 import java.util.ArrayList;
-import java.util.ListIterator;
 
-/**
- * Created by Entrace on 2015/6/11.
- */
-public class OfficerExam extends FragmentActivity {
+
+public class OfficerExam extends ActionBarActivity
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    //region NavigationDrawerFragment..這段不要修改
+
+    /**
+     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
+     */
+    private NavigationDrawerFragment mNavigationDrawerFragment;
 
     Reader rd = null;
     StringBuilder str = new StringBuilder();
@@ -29,14 +40,85 @@ public class OfficerExam extends FragmentActivity {
     ListView listView ;
     private Context context;
 
+    /**
+     *
+     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
+     */
+    //private CharSequence mTitle;
 
+    @Override
+    public void onNavigationDrawerItemSelected(int position) {
+        // update the main content by replacing fragments
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, Common.PlaceholderFragment.newInstance(position + 1, this))
+                .commit();
+    }
+
+
+    public void restoreActionBar() {
+        Log.i("About", "restoreActionBar");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle(Common.mTitle);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+            Log.i("About", "onCreateOptionsMenu change layout");
+            // Only show items in the action bar relevant to this screen
+            // if the drawer is not showing. Otherwise, let the drawer
+            // decide what to show in the action bar.
+            getMenuInflater().inflate(R.menu.main, menu);
+            restoreActionBar();
+            return true;
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.i("About", "onOptionsItemSelected");
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    //endregion NavigationDrawerFragment..這段不要修改
+
+    //從這裡開始寫Code
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.joblist);
+        setContentView(R.layout.navigation_drawer);
 
-        listView =(ListView) findViewById(R.id.listView);
+        Log.i("About", "onCreate");
+
+        mNavigationDrawerFragment = (NavigationDrawerFragment)
+                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        //Common.mTitle = getTitle();
+
+        // Set up the drawer.
+        mNavigationDrawerFragment.setUp(
+                R.id.navigation_drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout));
+    }
+
+
+    public void onResume() {
+
+        listView =(ListView) Common.rootView.findViewById(R.id.listView);
         context = this;
         String examPlan = null;
         AssetManager manager = this.getAssets();
@@ -111,9 +193,9 @@ public class OfficerExam extends FragmentActivity {
 
         listView.setAdapter(new OfficerAdapter(context, governmentOfficers));
 
-      //  listView.setOnItemClickListener(new MyOnItemClickListener());
+        //  listView.setOnItemClickListener(new MyOnItemClickListener());
 
-
+        super.onResume();
     }
 
-} //end Acitivity
+}

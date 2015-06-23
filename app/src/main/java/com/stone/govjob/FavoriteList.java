@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.stone.myclass.Common;
 import com.stone.myclass.FavoriteAdapter;
@@ -41,7 +42,7 @@ public class FavoriteList extends ActionBarActivity
      *
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
-    private CharSequence mTitle;
+    //private CharSequence mTitle;
 
     //View rootview;
     ArrayList<Job> xmljobs,queryResults;
@@ -64,26 +65,13 @@ public class FavoriteList extends ActionBarActivity
                 .commit();
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
-    }
 
     public void restoreActionBar() {
         Log.i("Favorite", "restoreActionBar");
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+        actionBar.setTitle(Common.mTitle);
     }
 
     @Override
@@ -129,7 +117,7 @@ public class FavoriteList extends ActionBarActivity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        //Common.mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -145,11 +133,16 @@ public class FavoriteList extends ActionBarActivity
         //ArrayList<Job> jobs = jobDAO.getAll();
         ArrayList<Job> jobs = jobDAO.queryAllFavorite();
 
-        ListView listView =(ListView)Common.rootView.findViewById(R.id.listView);
+        if (!jobs.isEmpty()) {
+            ListView listView = (ListView) Common.rootView.findViewById(R.id.listView);
 
-        listView.setAdapter(new FavoriteAdapter(this, jobs));
+            listView.setAdapter(new FavoriteAdapter(this, jobs));
 
-        listView.setOnItemClickListener(new MyOnItemClickListener());
+            listView.setOnItemClickListener(new MyOnItemClickListener());
+        }
+        else {
+            Toast.makeText(this, "目前無儲存我的最愛!", Toast.LENGTH_SHORT).show();
+        }
 
         super.onResume();
     }
