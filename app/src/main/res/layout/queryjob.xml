@@ -111,4 +111,12 @@
             android:layout_weight="1" />
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="104年公職考試日期表"
+        android:id="@+id/officer"
+        android:layout_weight="1"
+        android:onClick="goexam" />
 </LinearLayout>

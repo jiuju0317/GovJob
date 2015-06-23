@@ -1,0 +1,693 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 11">
+
+
+
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:LastAuthor>111</o:LastAuthor>
+  <o:LastPrinted>2010-12-01T01:35:01Z</o:LastPrinted>
+  <o:Created>2010-04-09T02:35:41Z</o:Created>
+  <o:LastSaved>2010-12-21T08:29:54Z</o:LastSaved>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.59in .39in 0in .39in;
+	mso-header-margin:.51in;
+	mso-footer-margin:.51in;
+	mso-page-orientation:landscape;
+	mso-horizontal-page-align:center;}
+.font7
+	{color:windowtext;
+	font-size:10.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:細明體, monospace;
+	mso-font-charset:136;}
+.font8
+	{color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"Times New Roman", serif;
+	mso-font-charset:0;}
+tr
+	{mso-height-source:auto;
+	mso-ruby-visibility:none;}
+col
+	{mso-width-source:auto;
+	mso-ruby-visibility:none;}
+br
+	{mso-data-placement:same-cell;}
+.style0
+	{mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:新細明體, serif;
+	mso-font-charset:136;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:一般;
+	mso-style-id:0;}
+.newtd
+	{mso-style-parent:style0;
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:新細明體, serif;
+	mso-font-charset:136;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:nowrap;
+	mso-rotate:0;}
+.xl24
+	{mso-style-parent:style0;
+	vertical-align:top;}
+.xl25
+	{mso-style-parent:style0;
+	text-align:center;
+	vertical-align:top;}
+.xl26
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	font-weight:700;
+	font-family:"Times New Roman", serif;
+	mso-font-charset:0;
+	text-align:center;
+	vertical-align:top;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl27
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	font-weight:700;
+	font-family:細明體, monospace;
+	mso-font-charset:136;
+	text-align:center;
+	vertical-align:top;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+.xl28
+	{mso-style-parent:style0;
+	white-space:normal;}
+.xl29
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	font-family:細明體, monospace;
+	mso-font-charset:136;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl30
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	font-family:細明體, monospace;
+	mso-font-charset:136;
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl31
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	font-family:細明體, monospace;
+	mso-font-charset:136;
+	text-align:left;
+	vertical-align:top;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl32
+	{mso-style-parent:style0;
+	font-weight:700;
+	font-family:細明體, monospace;
+	mso-font-charset:136;
+	text-align:center;
+	vertical-align:top;}
+.xl33
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	font-weight:700;
+	font-family:細明體, monospace;
+	mso-font-charset:136;
+	text-align:center;
+	vertical-align:top;}
+.xl34
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	font-family:"Times New Roman", serif;
+	mso-font-charset:0;
+	text-align:left;
+	vertical-align:top;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+.xl35
+	{mso-style-parent:style0;
+	font-size:10.0pt;
+	font-family:細明體, monospace;
+	mso-font-charset:136;
+	text-align:right;
+	vertical-align:top;
+	border-top:none;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+ruby
+	{ruby-align:left;}
+rt
+	{color:windowtext;
+	font-size:9.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:新細明體, serif;
+	mso-font-charset:136;
+	mso-char-type:none;
+	display:none;}
+-->
+</style>
+<!--[if gte mso 9]>
+<xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>rptLog</x:Name>
+    <x:WorksheetOptions>
+     <x:DefaultRowHeight>330</x:DefaultRowHeight>
+     <x:Print>
+      <x:ValidPrinterInfo/>
+      <x:PaperSizeIndex>9</x:PaperSizeIndex>
+      <x:HorizontalResolution>600</x:HorizontalResolution>
+      <x:VerticalResolution>600</x:VerticalResolution>
+     </x:Print>
+     <x:Selected/>
+     <x:Panes>
+      <x:Pane>
+       <x:Number>3</x:Number>
+       <x:RangeSelection>$A$1:$G$1</x:RangeSelection>
+      </x:Pane>
+     </x:Panes>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+  </x:ExcelWorksheets>
+  <x:WindowHeight>11640</x:WindowHeight>
+  <x:WindowWidth>15480</x:WindowWidth>
+  <x:WindowTopX>480</x:WindowTopX>
+  <x:WindowTopY>120</x:WindowTopY>
+  <x:ProtectStructure>False</x:ProtectStructure>
+  <x:ProtectWindows>False</x:ProtectWindows>
+ </x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+
+<body link=blue vlink=purple>
+
+<table x:str border=0 cellpadding=0 cellspacing=0 style='border-collapse:collapse;table-layout:fixed;width:854pt' class='newtd'>
+ <col style='mso-width-source:userset;mso-width-alt:1920;width:45pt'>
+ <col style='width:54pt'>
+ <col style='mso-width-source:userset;mso-width-alt:7840;width:184pt'>
+ <col style='mso-width-source:userset;mso-width-alt:4000;width:94pt'>
+ <col style='mso-width-source:userset;mso-width-alt:5280;width:124pt'>
+ <col style='mso-width-source:userset;mso-width-alt:5280;width:124pt'>
+ <col style='mso-width-source:userset;mso-width-alt:7840;width:184pt'>
+ <col style='mso-width-source:userset;mso-width-alt:1920;width:45pt'>
+<!--[#Options Page:1 Record:40]-->
+<!--[#PageHeader]-->
+ <tr style='mso-height-source:userset;height:22.5pt'>
+  <td class=xl32 colspan=7>考　選　部</td>
+  <td></td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td class=xl33 colspan=7>104年考試期日計畫表</td>
+  <td></td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td class=xl34 colspan=4>　</td>
+  <td class=xl35 colspan=3>列印日期：104/06/20</td>
+  <td></td>
+ </tr>
+ <tr style='height:16.5pt'>
+  <td class=xl26>序號</td>
+  <td class=xl27>考試代碼</td>
+  <td class=xl27>考試名稱</td>
+  <td class=xl27>等級</td>
+  <td class=xl27>預定報名日期</td>
+  <td class=xl27>預定考試日期</td>
+  <td class=xl27>備註</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="1" align=right style='white-space:nowrap'>1</td>
+  <td class=xl30 x:num="104010" align=right style='white-space:nowrap'>104010</td>
+  <td class=xl31>104年公務人員初等考試</td>
+  <td class=xl31>初等</td>
+  <td class=xl31>103.10.21(二)-10.30(四)</td>
+  <td class=xl31>104.01.10(六)-01.11(日)</td>
+  <td class=xl31>1.分臺北、新竹、臺中、嘉義、臺南、高雄、花蓮、臺東八考區舉行。<br>2.承辦單位：高普考試司第一科。<br>3.試務工作室電話：02-22369188分機3956、3958。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=2 x:num="2" align=right style='white-space:nowrap'>2</td>
+  <td class=xl30 x:num="104020" align=right style='white-space:nowrap'>104020</td>
+  <td class=xl31>104年第一次專門職業及技術人員高等考試牙醫師藥師考試分階段考試、藥師、醫事檢驗師、醫事放射師、助產師、物理治療師、職能治療師、呼吸治療師、獸醫師考試</td>
+  <td class=xl31>專技高考</td>
+  <td class=xl31>103.10.21(二)-10.30(四)</td>
+  <td class=xl31>104.01.31(六)-02.01(日)</td>
+  <td class=xl31>1.分臺北、臺中、臺南、高雄四考區舉行。<br>2.電腦化測驗。<br>3.承辦單位：專技考試司第四科。<br>4.試務工作室電話：02-22369188分機3706、3708。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl30 x:num="104021" align=right style='white-space:nowrap'>104021</td>
+  <td class=xl31>104年第一次專門職業及技術人員高等暨普通考試航海人員考試【舊案補考】</td>
+  <td class=xl31>專技高考、普考</td>
+  <td class=xl31>103.10.21(二)-10.30(四)</td>
+  <td class=xl31>104.01.31(六)-02.01(日)</td>
+  <td class=xl31>1.航海人員考試【舊案補考】僅設臺北考區。<br>2.電腦化測驗。<br>3.承辦單位：專技考試司第四科。<br>4.試務工作室電話：02-22369188分機3930、3931。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="3" align=right style='white-space:nowrap'>3</td>
+  <td class=xl30 x:num="104030" align=right style='white-space:nowrap'>104030</td>
+  <td class=xl31>104年第一次專門職業及技術人員高等考試醫師中醫師考試分階段考試、中醫師、營養師、心理師、護理師、社會工作師考試</td>
+  <td class=xl31>專技高考</td>
+  <td class=xl31>103.10.21(二)-10.30(四)</td>
+  <td class=xl31>104.02.07(六)-02.08(日)</td>
+  <td class=xl31>1.分臺北、臺中、高雄三考區舉行。<br>2.承辦單位：專技考試司第三科。<br>3.試務工作室電話：02-22369188分機3936、3937。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="4" align=right style='white-space:nowrap'>4</td>
+  <td class=xl30 x:num="104040" align=right style='white-space:nowrap'>104040</td>
+  <td class=xl31>104年專門職業及技術人員普通考試導遊人員、領隊人員考試</td>
+  <td class=xl31>專技普考</td>
+  <td class=xl31>103.11.25(二)-12.04(四)</td>
+  <td class=xl31>104.03.14(六)-03.15(日)</td>
+  <td class=xl31>1.分臺北、桃園、新竹、臺中、嘉義、臺南、高雄、花蓮、臺東、澎湖、金門、馬祖十二考區舉行。<br>2.承辦單位：專技考試司第一科。<br>3.試務工作室電話：02-22369188分機3925、3926、3927。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=3 x:num="5" align=right style='white-space:nowrap'>5</td>
+  <td class=xl30 rowspan=3 x:num="104050" align=right style='white-space:nowrap'>104050</td>
+  <td class=xl31>104年公務人員特種考試關務人員考試</td>
+  <td class=xl31>三等、四等、五等</td>
+  <td class=xl31>104.01.06(二)-01.15(四)</td>
+  <td class=xl31>104.04.18(六)-04.19(日)</td>
+  <td class=xl31>1.關務人員特考分臺北、臺中、高雄三考區舉行。<br>2.國軍上校以上軍官轉任公務人員考試僅設臺北考區。<br>3.身心障礙特考分臺北、臺中、高雄、宜蘭、花蓮、臺東六考區舉行。<br>4.承辦單位：特種考試司第一、三科。<br>5.試務工作室電話：02-22369188分機3741、3742。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試身心障礙人員考試</td>
+  <td class=xl31>三等、四等、五等</td>
+  <td class=xl31>104.01.06(二)-01.15(四)</td>
+  <td class=xl31>104.04.18(六)-04.19(日)</td>
+  <td class=xl31>1.關務人員特考分臺北、臺中、高雄三考區舉行。<br>2.國軍上校以上軍官轉任公務人員考試僅設臺北考區。<br>3.身心障礙特考分臺北、臺中、高雄、宜蘭、花蓮、臺東六考區舉行。<br>4.承辦單位：特種考試司第一、三科。<br>5.試務工作室電話：02-22369188分機3741、3742。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年國軍上校以上軍官轉任公務人員考試</td>
+  <td class=xl31>中將轉任、少將轉任、上校轉任</td>
+  <td class=xl31>104.01.06(二)-01.15(四)</td>
+  <td class=xl31>104.04.18(六)-04.19(日)</td>
+  <td class=xl31>1.關務人員特考分臺北、臺中、高雄三考區舉行。<br>2.國軍上校以上軍官轉任公務人員考試僅設臺北考區。<br>3.身心障礙特考分臺北、臺中、高雄、宜蘭、花蓮、臺東六考區舉行。<br>4.承辦單位：特種考試司第一、三科。<br>5.試務工作室電話：02-22369188分機3741、3742。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="6" align=right style='white-space:nowrap'>6</td>
+  <td class=xl30 x:num="104060" align=right style='white-space:nowrap'>104060</td>
+  <td class=xl31>104年專門職業及技術人員高等考試驗船師、引水人、第一次食品技師考試、高等暨普通考試消防設備人員考試、普通考試地政士、專責報關人員、保險代理人保險經紀人及保險公證人考試</td>
+  <td class=xl31>專技高考、普考</td>
+  <td class=xl31>104.03.03(二)-03.12(四)</td>
+  <td class=xl31>104.06.06(六)-06.08(一)</td>
+  <td class=xl31>1.6月6日至7日分臺北、臺中、高雄三考區舉行。<br>2.6月6日至8日引水人考試僅設臺北考區。<br>3.承辦單位：專技考試司第五科。<br>4.試務工作室電話：02-22369188分機3921、3922。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=4 x:num="7" align=right style='white-space:nowrap'>7</td>
+  <td class=xl30 rowspan=4 x:num="104070" align=right style='white-space:nowrap'>104070</td>
+  <td class=xl31>104年公務人員特種考試警察人員考試</td>
+  <td class=xl31>三等、四等</td>
+  <td class=xl31>104.03.10(二)-03.19(四)</td>
+  <td class=xl31>104.06.13(六)-06.15(一)</td>
+  <td class=xl31>1.分臺北、新竹、臺中、嘉義、臺南、高雄、花蓮、臺東八考區舉行。<br>2.承辦單位：特種考試司第三科。<br>3.試務工作室電話：02-22369188分機3948、3949。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試一般警察人員考試</td>
+  <td class=xl31>二等、三等、四等</td>
+  <td class=xl31>104.03.10(二)-03.19(四)</td>
+  <td class=xl31>104.06.13(六)-06.15(一)</td>
+  <td class=xl31>1.分臺北、新竹、臺中、嘉義、臺南、高雄、花蓮、臺東八考區舉行。<br>2.承辦單位：特種考試司第三科。<br>3.試務工作室電話：02-22369188分機3948、3949。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年特種考試交通事業鐵路人員考試</td>
+  <td class=xl31>高員三級、員級、佐級</td>
+  <td class=xl31>104.03.10(二)-03.19(四)</td>
+  <td class=xl31>104.06.13(六)-06.15(一)</td>
+  <td class=xl31>1.分臺北、新竹、臺中、嘉義、臺南、高雄、花蓮、臺東八考區舉行。<br>2.承辦單位：特種考試司第三科。<br>3.試務工作室電話：02-22369188分機3948、3949。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年特種考試退除役軍人轉任公務人員考試</td>
+  <td class=xl31>三等、四等</td>
+  <td class=xl31>104.03.10(二)-03.19(四)</td>
+  <td class=xl31>104.06.13(六)-06.15(一)</td>
+  <td class=xl31>1.分臺北、新竹、臺中、嘉義、臺南、高雄、花蓮、臺東八考區舉行。<br>2.承辦單位：特種考試司第三科。<br>3.試務工作室電話：02-22369188分機3948、3949。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="8" align=right style='white-space:nowrap'>8</td>
+  <td class=xl30 x:num="104080" align=right style='white-space:nowrap'>104080</td>
+  <td class=xl31>104年公務人員高等考試三級考試暨普通考試</td>
+  <td class=xl31>高考三級、普考</td>
+  <td class=xl31>104.03.31(二)-04.09(四)</td>
+  <td class=xl31>104.07.10(五)-07.14(二)</td>
+  <td class=xl31>1.分臺北、桃園、新竹、臺中、彰化、嘉義、臺南、高雄、花蓮、臺東、澎湖、金門、馬祖十三考區舉行。<br>2.7月10日至11日普通考試；7月12日至14日高考三級考試。<br>3.承辦單位：高普考試司第一科。<br>4.試務工作室電話：02-22369188分機3955、3956(普考)、3958、3959(高考)。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=2 x:num="9" align=right style='white-space:nowrap'>9</td>
+  <td class=xl30 x:num="104090" align=right style='white-space:nowrap'>104090</td>
+  <td class=xl31>104年第二次專門職業及技術人員高等考試醫師牙醫師藥師考試分階段考試、藥師、醫事檢驗師、醫事放射師、助產師、物理治療師、職能治療師、呼吸治療師、獸醫師考試</td>
+  <td class=xl31>專技高考</td>
+  <td class=xl31>104.04.17(五)-04.27(一)</td>
+  <td class=xl31>104.07.18(六)-07.21(二)</td>
+  <td class=xl31>1.分臺北、臺中、臺南、高雄四考區舉行。<br>2.電腦化測驗。<br>3.承辦單位：專技考試司第四科。<br>4.試務工作室電話：02-22369188分機3706、3708。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl30 x:num="104091" align=right style='white-space:nowrap'>104091</td>
+  <td class=xl31>104年第二次專門職業及技術人員高等暨普通考試航海人員考試【舊案補考】</td>
+  <td class=xl31>專技高考、普考</td>
+  <td class=xl31>104.04.17(五)-04.27(一)</td>
+  <td class=xl31>104.07.18(六)-07.19(日)</td>
+  <td class=xl31>1.航海人員考試【舊案補考】僅設臺北考區。<br>2.電腦化測驗。<br>3.承辦單位：專技考試司第四科。<br>4.試務工作室電話：02-22369188分機3930、3931。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=2 x:num="10" align=right style='white-space:nowrap'>10</td>
+  <td class=xl30 rowspan=2 x:num="104100" align=right style='white-space:nowrap'>104100</td>
+  <td class=xl31>104年第二次專門職業及技術人員高等考試中醫師考試分階段考試、營養師、心理師、護理師、社會工作師考試</td>
+  <td class=xl31>專技高考</td>
+  <td class=xl31>104.04.17(五)-04.27(一)</td>
+  <td class=xl31>104.07.25(六)-07.27(一)</td>
+  <td class=xl31>1.7月25日至26日分臺北、臺中、臺南、高雄、花蓮、臺東六考區舉行<br>2.7月26日至27日牙體技術師考試僅設臺北考區。<br>3.承辦單位：專技考試司第三科。<br>4.試務工作室電話：02-22369188分機3936、3937。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年專門職業及技術人員高等考試法醫師、語言治療師、聽力師、牙體技術師考試</td>
+  <td class=xl31>專技高考</td>
+  <td class=xl31>104.04.17(五)-04.27(一)</td>
+  <td class=xl31>104.07.25(六)-07.27(一)</td>
+  <td class=xl31>1.7月25日至26日分臺北、臺中、臺南、高雄、花蓮、臺東六考區舉行<br>2.7月26日至27日牙體技術師考試僅設臺北考區。<br>3.承辦單位：專技考試司第三科。<br>4.試務工作室電話：02-22369188分機3936、3937。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=4 x:num="11" align=right style='white-space:nowrap'>11</td>
+  <td class=xl30 rowspan=2 x:num="104110" align=right style='white-space:nowrap'>104110</td>
+  <td class=xl31>104年公務人員特種考試司法官考試(第一試)</td>
+  <td class=xl31>三等</td>
+  <td class=xl31>104.05.05(二)-05.14(四)</td>
+  <td class=xl31>104.08.08(六)</td>
+  <td class=xl31>1.司法官考試第一試與律師考試第一試同時舉行，並採用同一試題。<br>2.分臺北、臺中、高雄三考區舉行。<br>3.承辦單位：特種考試司(試政)、專技考試司(試務)。<br>4.試務工作室電話：02-22369188分機3926、3927。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年專門職業及技術人員高等考試律師考試(第一試)</td>
+  <td class=xl31>專技高考</td>
+  <td class=xl31>104.05.05(二)-05.14(四)</td>
+  <td class=xl31>104.08.08(六)</td>
+  <td class=xl31>1.司法官考試第一試與律師考試第一試同時舉行，並採用同一試題。<br>2.分臺北、臺中、高雄三考區舉行。<br>3.承辦單位：特種考試司(試政)、專技考試司(試務)。<br>4.試務工作室電話：02-22369188分機3926、3927。</td>
+  <td></td>
+ </tr>
+ <tr style='height:28.50pt'>
+  <td class=xl30 x:num="104111" align=right style='white-space:nowrap'>104111</td>
+  <td class=xl31>104年公務人員特種考試司法官考試(第二試)</td>
+  <td class=xl31>三等</td>
+  <td class=xl31>104.09.18(五)-09.24(四)</td>
+  <td class=xl31>104.10.17(六)-10.18(日)</td>
+  <td class=xl31>分臺北、高雄二考區舉行。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl30 x:num="104112" align=right style='white-space:nowrap'>104112</td>
+  <td class=xl31>104年專門職業及技術人員高等考試律師考試(第二試)</td>
+  <td class=xl31>專技高考</td>
+  <td class=xl31>104.09.18(五)-09.24(四)</td>
+  <td class=xl31>104.10.24(六)-10.25(日)</td>
+  <td class=xl31>分臺北、高雄二考區舉行。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=5 x:num="12" align=right style='white-space:nowrap'>12</td>
+  <td class=xl30 rowspan=5 x:num="104120" align=right style='white-space:nowrap'>104120</td>
+  <td class=xl31>104年公務人員特種考試司法人員考試</td>
+  <td class=xl31>三等、四等、五等</td>
+  <td class=xl31>104.05.12(二)-05.21(四)</td>
+  <td class=xl31>104.08.15(六)-08.17(一)</td>
+  <td class=xl31>1.分臺北、臺中、臺南、高雄、花蓮、臺東六考區舉行。<br>2.承辦單位：特種考試司第一科。<br>3.試務工作室電話：02-22369188分機3945、3946、3947。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試法務部調查局調查人員考試</td>
+  <td class=xl31>三等、四等</td>
+  <td class=xl31>104.05.12(二)-05.21(四)</td>
+  <td class=xl31>104.08.15(六)-08.16(日)</td>
+  <td class=xl31>1.分臺北、臺中、臺南、高雄、花蓮、臺東六考區舉行。<br>2.承辦單位：特種考試司第一科。<br>3.試務工作室電話：02-22369188分機3945、3946、3947。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試國家安全局國家安全情報人員考試</td>
+  <td class=xl31>三等、五等</td>
+  <td class=xl31>104.05.12(二)-05.21(四)</td>
+  <td class=xl31>104.08.15(六)-08.16(日)</td>
+  <td class=xl31>1.分臺北、臺中、臺南、高雄、花蓮、臺東六考區舉行。<br>2.承辦單位：特種考試司第一科。<br>3.試務工作室電話：02-22369188分機3945、3946、3947。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試海岸巡防人員考試</td>
+  <td class=xl31>三等</td>
+  <td class=xl31>104.05.12(二)-05.21(四)</td>
+  <td class=xl31>104.08.15(六)-08.16(日)</td>
+  <td class=xl31>1.分臺北、臺中、臺南、高雄、花蓮、臺東六考區舉行。<br>2.承辦單位：特種考試司第一科。<br>3.試務工作室電話：02-22369188分機3945、3946、3947。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試移民行政人員考試</td>
+  <td class=xl31>三等、四等</td>
+  <td class=xl31>104.05.12(二)-05.21(四)</td>
+  <td class=xl31>104.08.15(六)-08.17(一)</td>
+  <td class=xl31>1.分臺北、臺中、臺南、高雄、花蓮、臺東六考區舉行。<br>2.承辦單位：特種考試司第一科。<br>3.試務工作室電話：02-22369188分機3945、3946、3947。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="13" align=right style='white-space:nowrap'>13</td>
+  <td class=xl30 x:num="104130" align=right style='white-space:nowrap'>104130</td>
+  <td class=xl31>104年專門職業及技術人員高等考試會計師、不動產估價師、專利師考試</td>
+  <td class=xl31>專技高考</td>
+  <td class=xl31>104.05.19(二)-05.28(四)</td>
+  <td class=xl31>104.08.22(六)-08.24(一)</td>
+  <td class=xl31>1.分臺北、臺中、高雄三考區舉行。<br>2.承辦單位：專技考試司第一科。 <br>3.試務工作室電話：02-22369188分機3926、3927。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=4 x:num="14" align=right style='white-space:nowrap'>14</td>
+  <td class=xl30 rowspan=4 x:num="104140" align=right style='white-space:nowrap'>104140</td>
+  <td class=xl31>104年公務人員特種考試外交領事人員及外交行政人員考試</td>
+  <td class=xl31>三等、四等</td>
+  <td class=xl31>104.06.09(二)-06.18(四)</td>
+  <td class=xl31>104.09.12(六)-09.13(日)</td>
+  <td class=xl31>1.外交領事人員、外交行政人員及稅務人員特考分臺北、高雄二考區舉行。<br>2.民航人員特考僅設臺北考區。<br>3.原住民族特考分臺北、南投、屏東、花蓮、臺東五考區舉行。<br>4.承辦單位：特種考試司第二科。<br>5.試務工作室電話：02-22369188分機3943、3944。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試民航人員考試</td>
+  <td class=xl31>三等</td>
+  <td class=xl31>104.06.09(二)-06.18(四)</td>
+  <td class=xl31>104.09.12(六)-09.14(一)</td>
+  <td class=xl31>1.外交領事人員、外交行政人員及稅務人員特考分臺北、高雄二考區舉行。<br>2.民航人員特考僅設臺北考區。<br>3.原住民族特考分臺北、南投、屏東、花蓮、臺東五考區舉行。<br>4.承辦單位：特種考試司第二科。<br>5.試務工作室電話：02-22369188分機3943、3944。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試稅務人員考試</td>
+  <td class=xl31>三等、四等</td>
+  <td class=xl31>104.06.09(二)-06.18(四)</td>
+  <td class=xl31>104.09.12(六)-09.13(日)</td>
+  <td class=xl31>1.外交領事人員、外交行政人員及稅務人員特考分臺北、高雄二考區舉行。<br>2.民航人員特考僅設臺北考區。<br>3.原住民族特考分臺北、南投、屏東、花蓮、臺東五考區舉行。<br>4.承辦單位：特種考試司第二科。<br>5.試務工作室電話：02-22369188分機3943、3944。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年公務人員特種考試原住民族考試</td>
+  <td class=xl31>三等、四等、五等</td>
+  <td class=xl31>104.06.09(二)-06.18(四)</td>
+  <td class=xl31>104.09.12(六)-09.13(日)</td>
+  <td class=xl31>1.外交領事人員、外交行政人員及稅務人員特考分臺北、高雄二考區舉行。<br>2.民航人員特考僅設臺北考區。<br>3.原住民族特考分臺北、南投、屏東、花蓮、臺東五考區舉行。<br>4.承辦單位：特種考試司第二科。<br>5.試務工作室電話：02-22369188分機3943、3944。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="15" align=right style='white-space:nowrap'>15</td>
+  <td class=xl30 x:num="104150" align=right style='white-space:nowrap'>104150</td>
+  <td class=xl31>104年公務人員高等考試一級暨二級考試</td>
+  <td class=xl31>一級、二級</td>
+  <td class=xl31>104.07.17(五)-07.27(一)</td>
+  <td class=xl31>104.10.03(六)-10.04(日)</td>
+  <td class=xl31>分臺北、高雄二考區舉行。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl29 rowspan=4 x:num="16" align=right style='white-space:nowrap'>16</td>
+  <td class=xl30 rowspan=4 x:num="104160" align=right style='white-space:nowrap'>104160</td>
+  <td class=xl31>104年公務人員升官等考試</td>
+  <td class=xl31>簡任、薦任</td>
+  <td class=xl31>104.07.28(二)-08.06(四)</td>
+  <td class=xl31>104.11.07(六)-11.09(一)</td>
+  <td class=xl31>1.分臺北、臺中、高雄三考區舉行。<br>2.11月7日至9日公務及關務人員簡任升官等考試僅設臺北考區。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年關務人員升官等考試</td>
+  <td class=xl31>簡任、薦任</td>
+  <td class=xl31>104.07.28(二)-08.06(四)</td>
+  <td class=xl31>104.11.07(六)-11.09(一)</td>
+  <td class=xl31>1.分臺北、臺中、高雄三考區舉行。<br>2.11月7日至9日公務及關務人員簡任升官等考試僅設臺北考區。<br></td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年交通事業公路人員升資考試</td>
+  <td class=xl31>員晉高員、佐晉員、士晉佐</td>
+  <td class=xl31>104.07.28(二)-08.06(四)</td>
+  <td class=xl31>104.11.07(六)-11.08(日)</td>
+  <td class=xl31>1.分臺北、臺中、高雄三考區舉行。<br>2.11月7日至9日公務及關務人員簡任升官等考試僅設臺北考區。<br></td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl31>104年交通事業港務人員升資考試</td>
+  <td class=xl31>員晉高員、佐晉員、士晉佐</td>
+  <td class=xl31>104.07.28(二)-08.06(四)</td>
+  <td class=xl31>104.11.07(六)-11.08(日)</td>
+  <td class=xl31>1.分臺北、臺中、高雄三考區舉行。<br>2.11月7日至9日公務及關務人員簡任升官等考試僅設臺北考區。<br></td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="17" align=right style='white-space:nowrap'>17</td>
+  <td class=xl30 x:num="104170" align=right style='white-space:nowrap'>104170</td>
+  <td class=xl31>104年專門職業及技術人員高等考試建築師、技師、第二次食品技師考試暨普通考試不動產經紀人、記帳士考試</td>
+  <td class=xl31>專技高考、普考</td>
+  <td class=xl31>104.08.04(二)-08.13(四)</td>
+  <td class=xl31>104.11.21(六)-11.23(一)</td>
+  <td class=xl31>1.分臺北、臺中、臺南、高雄、花蓮、臺東六考區舉行。<br>2.104年技師考試辦理土木工程技師等25類科考試，航空工程、紡織工程、冶金工程、漁撈、造船工程、採礦工程、礦業安全等7類科不舉辦。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='height:28.50pt'>
+  <td class=xl29 x:num="18" align=right style='white-space:nowrap'>18</td>
+  <td class=xl30 x:num="104180" align=right style='white-space:nowrap'>104180</td>
+  <td class=xl31>104年特種考試地方政府公務人員考試</td>
+  <td class=xl31>三等、四等、五等</td>
+  <td class=xl31>104.09.15(二)-09.24(四)</td>
+  <td class=xl31>104.12.12(六)-12.14(一)</td>
+  <td class=xl31>分臺北、桃園、新竹、臺中、嘉義、臺南、高雄、花蓮、臺東、澎湖、金門、馬祖十二考區舉行。</td>
+  <td></td>
+ </tr>
+<!--[#Details]-->
+ <tr style='mso-height-source:userset;height:200.00pt'>
+  <td class=xl29>備註</td>
+  <td class=xl30 colspan=6 style='white-space:normal'>1. 表列考試104年度全面採網路報名單軌化作業。<br>2. 表列考試及其預定報名日期、預定考試日期，必要時得予變更，並以考試公告為主。<br>3. 104年軍法官考試，將視軍法官考試規則修正發布情形，適時列入考試期日計畫。<br>4. 本期日計畫表業經提報103年7月24日考試院第11屆第294次會議備查在案。</td>
+  <td></td>
+ </tr>
+<!--[#PageFooter]-->
+ <tr style='mso-height-source:userset;height:3.75pt'>
+  <td class=xl24></td>
+  <td class=xl24></td>
+  <td class=xl24></td>
+  <td class=xl24></td>
+  <td class=xl24></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+<!--[#ReportFooter]-->
+ <tr style='mso-height-source:userset;height:9.0pt'>
+  <td class=xl24></td>
+  <td class=xl24></td>
+  <td class=xl24></td>
+  <td class=xl24></td>
+  <td class=xl24></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+</table>
+
+</body>
+
+</html>

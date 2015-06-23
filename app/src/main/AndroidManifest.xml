@@ -73,7 +73,10 @@
             android:label="@string/app_name" >
         </activity>
 
-
+        <activity
+            android:name=".OfficerExam"
+            android:label="104公職考試日期" >
+        </activity>
 
 
     </application>

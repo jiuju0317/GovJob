@@ -305,4 +305,35 @@ public class QueryJob extends ActionBarActivity
 
         }
     }
+
+
+
+
+    public void goexam (View view){
+        Intent intent = new Intent();
+        String addressS="";
+        switch (view.getId()) {
+
+            case R.id.officer : // 測試Intent 換頁
+
+
+                intent.setClass(QueryJob.this, OfficerExam.class);
+
+                startActivity(intent);
+
+                break;
+
+
+
+
+
+        }
+
+
+    }//end goexam function
+
+
+
+
+
 }

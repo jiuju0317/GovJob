@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="#ffff00"
+    android:weightSum="3"
+    android:padding="5px">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        android:padding="5px"
+        android:background="#ff7700">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/serialNumber"
+            android:background="#ff7700"
+            android:gravity="center"
+            android:textColor="#dedede" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="考試名稱"
+            android:id="@+id/nameT"
+            android:background="#0000CC"
+            android:textColor="#dedede"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/name"
+            android:background="#7fffd4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="等級"
+            android:id="@+id/levelT"
+            android:background="#0000CC"
+            android:textColor="#dedede"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/level"
+            android:background="#7fffd4"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="報名日期"
+            android:id="@+id/rdayT"
+            android:background="#0000CC"
+            android:textColor="#dedede"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/rday"
+            android:background="#7fffd4"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="考試日期"
+            android:id="@+id/tdayT"
+            android:background="#0000CC"
+            android:textColor="#dedede"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/tday"
+            android:background="#7fffd4"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="備註"
+            android:id="@+id/noteT"
+            android:background="#0000CC"
+            android:textColor="#dedede"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/note"
+            android:background="#7fffd4" />
+
+    </LinearLayout>
+</LinearLayout>
