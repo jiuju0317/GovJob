@@ -19,6 +19,8 @@ import org.xml.sax.XMLReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,8 +31,11 @@ import javax.xml.parsers.SAXParserFactory;
 public class MainActivity extends ActionBarActivity {
 
     ArrayList<Job> xmljobs,dbjobs;
-    int annoDate;
+    int annoDate;//version.xml取得的版本號
     private JobDAO jobDAO;
+
+    private String versionURL = "http://meamea.byethost5.com/version.xml";//版本號ANNOUNCE_DATE
+    private String dataURL = "http://meamea.byethost5.com/data.xml";
 
     private ProgressDialog progressDialog;
 
@@ -64,6 +69,7 @@ public class MainActivity extends ActionBarActivity {
     //=====解析XML並塞入資料庫====================
     public void parseXML(){
         SAXParserFactory spf = SAXParserFactory.newInstance();
+        int DBAnnoDate = jobDAO.getDBAnnoDate();
 
         try {
             SAXParser sp = spf.newSAXParser();
@@ -71,11 +77,45 @@ public class MainActivity extends ActionBarActivity {
 
             DataHandler dataHandler = new DataHandler();
             xr.setContentHandler(dataHandler);
-            InputStream is =this.getAssets().open("data.xml");
-            xr.parse(new InputSource(is));
 
-            xmljobs = dataHandler.getJobs();
+            //取得版本號inputstream
+            HttpURLConnection httpURLConnection_version = (HttpURLConnection) new URL(versionURL).openConnection();
+            //httpURLConnection.connect();
+            InputStream version_is = httpURLConnection_version.getInputStream();
+
+            //取得data inputstream
+            HttpURLConnection httpURLConnection_data = (HttpURLConnection) new URL(dataURL).openConnection();
+            //httpURLConnection_data.connect();
+            InputStream data_is = httpURLConnection_data.getInputStream();
+
+            xr.parse(new InputSource(version_is));
             annoDate = dataHandler.getAnnounceDate();
+
+            Log.d("annoDate", Integer.toString(annoDate));
+            Log.d("DBannoDate",Integer.toString(jobDAO.getDBAnnoDate()));
+
+            if(DBAnnoDate==0){ //第一次塞資料
+                xr.parse(new InputSource(data_is));
+                xmljobs = dataHandler.getJobs();
+
+                for (int i = 0; i < xmljobs.size(); i++) {
+                    Job xmlgetjob = xmljobs.get(i);
+                    jobDAO.insert(xmlgetjob); //塞入資料庫
+                }
+                jobDAO.insertDBAnnoDate(annoDate);
+            }else if(annoDate>jobDAO.getDBAnnoDate()){ //更新資料
+                xr.parse(new InputSource(data_is));
+                xmljobs = dataHandler.getJobs();
+
+                for (int i = 0; i < xmljobs.size(); i++) {
+                    Job xmlgetjob = xmljobs.get(i);
+                    jobDAO.insert(xmlgetjob); //塞入資料庫
+                }
+                jobDAO.setDBAnnoDate(annoDate);
+            }
+
+            httpURLConnection_version.disconnect();
+            httpURLConnection_data.disconnect();
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -86,24 +126,7 @@ public class MainActivity extends ActionBarActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("annoDate",Integer.toString(annoDate));
-        Log.d("DBannoDate",Integer.toString(jobDAO.getDBAnnoDate()));
 
-        int DBAnnoDate = jobDAO.getDBAnnoDate();
-
-        if(DBAnnoDate==0){ //第一次塞資料
-            for (int i = 0; i < xmljobs.size(); i++) {
-                Job xmlgetjob = xmljobs.get(i);
-                jobDAO.insert(xmlgetjob); //塞入資料庫
-            }
-            jobDAO.insertDBAnnoDate(annoDate);
-        }else if(annoDate>jobDAO.getDBAnnoDate()){ //更新資料
-            for (int i = 0; i < xmljobs.size(); i++) {
-                Job xmlgetjob = xmljobs.get(i);
-                jobDAO.insert(xmlgetjob); //塞入資料庫
-            }
-            jobDAO.setDBAnnoDate(annoDate);
-        }
 
     }
 
